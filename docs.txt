@@ -1,0 +1,2 @@
+mysqli_fetch_assoc() => trả về mảng kết hợp chứa thông tin của hàng kết quả.
+var_dump() => in ra thông tin của biến gồm kiểu dữ liệu của biến và giá trị.
