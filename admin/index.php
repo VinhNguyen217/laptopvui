@@ -1,5 +1,5 @@
 <?php
-include('./layouts/header.php');
+include './layouts/header.php';
 ?>
 <main>
     <div class="container-fluid px-4">

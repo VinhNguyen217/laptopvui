@@ -57,11 +57,11 @@ Session::checkSession();
                     <div class="nav">
                         <a class="nav-link" href="./index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Bảng Điều Khiển
+                            Dashboard
                         </a>
                         <a class="nav-link" href="../../../laptopvui/admin/modules/product/index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Sản Phẩm
+                            Product
                             <!-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
                         </a>
                         <!-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -72,20 +72,16 @@ Session::checkSession();
                         </div> -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProducer" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Danh Mục Sản Phẩm
+                            Category
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseProducer" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="login.php">Thêm Danh Mục</a>
-                                <a class="nav-link" href="register.php">Danh Mục Sản Phẩm</a>
+                                <a class="nav-link" href="category_add.php">Add Category</a>
+                                <a class="nav-link" href="category.php">Categories</a>
 
                             </nav>
                         </div>
-
-
-
-
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProductType" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Loại Sản Phẩm
@@ -133,4 +129,5 @@ Session::checkSession();
                 </div>
             </nav>
         </div>
+
         <div id="layoutSidenav_content">
