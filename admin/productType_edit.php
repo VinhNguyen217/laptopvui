@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
                         <form action="" method="POST" class="productType_add">
                             <div class="form-group">
-                                <input type="text" value="<?php echo $result['name'] ?>" class="form-control" aria-describedby="emailHelp" name="productType_name" placeholder="Enter product types name..." required>
+                                <input type="text" value="<?php echo $result['nameProductType'] ?>" class="form-control" aria-describedby="emailHelp" name="productType_name" placeholder="Enter product types name..." required>
                             </div>
                             <input type="submit" name="submit" class="btn btn-primary" value="UPDATE" />
                         </form>

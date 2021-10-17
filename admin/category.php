@@ -1,5 +1,5 @@
-<?php include './layouts/header.php' ?>
-<?php include '../classes/category.php' ?>
+<?php require_once './layouts/header.php' ?>
+<?php require_once '../classes/category.php' ?>
 <?php
 $cat = new Category();
 if (isset($_GET['deleteId'])) {
@@ -50,7 +50,7 @@ if (isset($_GET['deleteId'])) {
                                 <tr>
                                     <td><?php echo $result['id_producer']; ?></td>
                                     <td>
-                                        <?php echo $result['name'] ?>
+                                        <?php echo $result['nameProducer'] ?>
                                     </td>
                                     <td><?php
                                         if ($result['status'] == 1) {

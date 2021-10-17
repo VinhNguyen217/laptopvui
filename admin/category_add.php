@@ -1,5 +1,5 @@
-<?php include './layouts/header.php' ?>
-<?php include '../classes/category.php' ?>
+<?php require_once './layouts/header.php' ?>
+<?php require_once '../classes/category.php' ?>
 <?php
 $cat = new Category();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

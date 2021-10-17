@@ -1,6 +1,7 @@
 <?php
-require_once '../libraries/database.php';
-require_once '../helpers/format.php';
+ $filepath = realpath(dirname(__FILE__));
+ require_once ($filepath.'/../libraries/Database.php');
+ require_once ($filepath.'/../helpers/format.php');
 ?>
 
 <?php
@@ -23,7 +24,7 @@ class Category
             $alert = '<span style="color:red">Category name already exists</span>';
             return $alert;
         } else {
-            $query = "INSERT INTO producer(id_producer,name,status) VALUES(null,'$category_name',1) ";
+            $query = "INSERT INTO producer(id_producer,nameProducer,status) VALUES(null,'$category_name',1) ";
             $result = $this->db_category->insert($query);
 
             if ($result) {
@@ -45,7 +46,7 @@ class Category
 
         $category_name = mysqli_real_escape_string($this->db_category->link, $category_name);
 
-        $query = "SELECT * FROM producer WHERE name = '$category_name'";
+        $query = "SELECT * FROM producer WHERE nameProducer = '$category_name'";
         $result = $this->db_category->select($query);
 
         if ($result == false) {
@@ -84,7 +85,7 @@ class Category
             $alert = '<span style="color:red">Category name already exists</span>';
             return $alert;
         } else {
-            $query = "UPDATE producer SET name = '$category_name' WHERE id_producer = $id";
+            $query = "UPDATE producer SET nameProducer = '$category_name' WHERE id_producer = $id";
             $result = $this->db_category->update($query);
 
             if ($result) {
@@ -109,6 +110,7 @@ class Category
             return $alert;
         }
     }
+
 }
 
 ?>

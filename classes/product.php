@@ -1,6 +1,7 @@
 <?php
-require_once '../libraries/database.php';
-require_once '../helpers/format.php';
+ $filepath = realpath(dirname(__FILE__));
+ require_once ($filepath.'/../libraries/Database.php');
+ require_once ($filepath.'/../helpers/format.php');
 ?>
 
 <?php
@@ -176,6 +177,39 @@ class Product
             return $alert;
         }
     }
+    public function get_product($adr,$id,$name,$nums)
+    {
+        $query = "SELECT *  FROM $adr WHERE $name = $id ORDER BY id_product DESC LIMIT $nums ";
+        $result = $this->db->delete($query);
+        return $result;
+    }
+    public function get_products($adr,$id,$name,$item_per_page,$offset)
+    {
+        $query = "SELECT *  FROM $adr WHERE $name = $id ORDER BY id_product DESC LIMIT $item_per_page OFFSET $offset";
+        $result = $this->db->delete($query);
+        return $result;
+    }
+    public function  get_product_preview ($id) {
+        $query = "SELECT *  FROM product 
+                        join producer on product.id_producer = producer.id_producer 
+                        join product_type on product.id_product_type = product_type.id_product_type 
+                         WHERE id_product = $id";
+        $result = $this->db->delete($query);
+        return $result;
+    }
+    public function  get_category ($adr) {
+        $query = "SELECT *  FROM $adr ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function  get_products_cat ($adr,$id,$name) {
+        $query = "SELECT *  FROM $adr where $name = $id ";
+        $result = $this->db->number($query);
+        return $result;
+    }
+
 }
+   
+   
 
 ?>

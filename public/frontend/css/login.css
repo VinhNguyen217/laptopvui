@@ -1,0 +1,137 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.Login  a.resgiter {
+    right: 10px;
+    position: absolute;
+    text-decoration: none;
+    color: #4a4dd5;
+}
+:root{
+    --back1:#f6f6f8;
+    --padding1: 5px 5px;
+    --font1: 'Roboto', sans-serif;
+    --size1: 14px;
+    --size2: 25px;
+}
+.Login .exit-login {
+    font-size: 30px;
+    position: absolute;
+    right: -19px;
+    top: -21px;
+    color: #6a4917a6;
+}
+ .after-onclick-exit-login
+{
+    visibility: hidden;
+}
+.Login  a.item-login {
+    width: 25%;
+}
+
+.Login  .logo-login {justify-content: space-between;}
+
+.Login  .another-login h4 {
+    padding-bottom: 12px;
+}
+
+.Login  .form-login img {
+    height: 34px;
+    border-radius: 42px;
+    width: 31%;
+}
+
+.Login .another-login {
+    position: absolute;
+    text-align: center;
+    left: 33%;
+    top: 78%;
+}
+
+.Login  label {
+    font-size: var(--size1);
+}
+
+.Login  .input input {
+    background-color: #f1ecec;
+    border: none;
+    height: 25px;
+}
+
+.Login  input[type="submit"] {
+    visibility: inherit;
+    height: 39px;
+    background-color: #f7e2e2;
+    color: #2222ecc9;
+    width: 196px;
+    border-radius: 30px;
+    text-align: center;
+    left: 80px;
+    margin-top: 43px;
+    position: absolute;
+}
+.Login  input[type="submit"]:hover {
+    
+    background-color: #f7dddd;
+    
+}
+.Login  span.spin {
+    background-color: #5a726773;
+}
+
+.Login  .input {
+    display: grid;
+    padding-bottom: 18px;
+}
+
+.Login  .login-title {
+    padding-top: 11px;
+    padding-bottom: 8px;
+}
+
+.Login  .avata-login img {
+    width: 100%;
+    height: 100%;
+}
+
+.Login .avata-login {
+    width: 45%;
+    height: 100%;
+}
+
+.Login .content-login {
+    width: 50%;
+    height: 100%;
+    left: 20px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.Login .form-login {
+    color: #2222ecc9;
+    height: 400px;
+    width: 700px;
+    top: 20%;
+    left: 27%;
+    z-index: 5;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font1);
+    /* font-size: 20px; */
+    border: 5px solid #e1e3da;
+    background-color: #f1ecec;
+    border-radius: 5px;
+    box-shadow: 10px 10px #a09c9c31;
+}
+.Login .back-login{
+	background-color: #9bccf4a6;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left: 0;
+	position: fixed;
+	z-index: 3;
+}

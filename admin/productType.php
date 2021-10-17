@@ -50,7 +50,7 @@ if (isset($_GET['deleteId'])) {
                                 <tr>
                                     <td><?php echo $result['id_product_type']; ?></td>
                                     <td>
-                                        <?php echo $result['name'] ?>
+                                        <?php echo $result['nameProductType'] ?>
                                     </td>
                                     <td><?php
                                         if ($result['status'] == 1) {

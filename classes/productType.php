@@ -1,6 +1,7 @@
 <?php
-require_once '../libraries/database.php';
-require_once '../helpers/format.php';
+ $filepath = realpath(dirname(__FILE__));
+ require_once ($filepath.'/../libraries/Database.php');
+ require_once ($filepath.'/../helpers/format.php');
 ?>
 
 <?php
@@ -26,7 +27,7 @@ class ProductType
             $alert = '<span style="color:red">Product type already exists</span>';
             return $alert;
         } else {
-            $query = "INSERT INTO product_type(id_product_type,name,status) VALUES(null,'$productType_name',1) ";
+            $query = "INSERT INTO product_type(id_product_type,nameProductType,status) VALUES(null,'$productType_name',1) ";
             $result = $this->db_productType->insert($query);
 
             if ($result) {
@@ -48,7 +49,7 @@ class ProductType
 
         $productType_name = mysqli_real_escape_string($this->db_productType->link, $productType_name);
 
-        $query = "SELECT * FROM product_type WHERE name = '$productType_name'";
+        $query = "SELECT * FROM product_type WHERE nameProductType = '$productType_name'";
         $result = $this->db_productType->select($query);
 
         if ($result == false) {
@@ -90,7 +91,7 @@ class ProductType
             $alert = '<span style="color:red">Product Type already exists</span>';
             return $alert;
         } else {
-            $query = "UPDATE product_type SET name = '$productType_name' WHERE id_product_type = $id";
+            $query = "UPDATE product_type SET nameProductType = '$productType_name' WHERE id_product_type = $id";
             $result = $this->db_productType->update($query);
 
             if ($result) {
@@ -118,6 +119,7 @@ class ProductType
             return $alert;
         }
     }
+    
 }
 
 ?>

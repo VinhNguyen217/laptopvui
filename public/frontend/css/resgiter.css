@@ -1,0 +1,145 @@
+
+.Resgiter input[type="submit"] {
+    visibility: inherit;
+    height: 42px;
+    background-color: #f3e0e3;
+    color: #4289f4;
+    width: 196px;
+    border-radius: 30px;
+    text-align: center;
+    left: 137px;
+    margin-top: 32px;
+    position: absolute;
+}
+
+.Resgiter .form-login {
+    color: #3882f2;
+    width: 1000px;
+    top: 10%;
+    left: 23%;
+    height: 600px;
+    position: absolute;
+    font-size: 20px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font1);
+    border: 5px solid #e1e3da;
+    background-color: #f7f2f2;
+    border-radius: 5px;
+    box-shadow: 10px 10px #a09c9c31;
+}
+.Resgiter .back-login{
+	background-color: #9bccf4a6;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left: 0;
+	position: fixed;
+	z-index: 3;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.Resgiter a.resgiter {
+    right: 10px;
+    position: absolute;
+    text-decoration: none;
+    color: #82acec;
+}
+:root{
+    --back1:#f6f6f8;
+    --padding1: 5px 5px;
+    --font1: 'Roboto', sans-serif;
+    --size1: 14px;
+    --size2: 25px;
+}
+.Resgiter .exit-login {
+    font-size: 30px;
+    position: absolute;
+    right: -19px;
+    top: -21px;
+    color: #6a4917a6;
+}
+.Resgiter .after-onclick-exit-login
+{
+    visibility: hidden;
+}
+.Resgiter  a.item-login {
+    width: 25%;
+}
+
+.Resgiter  .logo-login {justify-content: space-between;}
+
+.Resgiter  .another-login h4 {
+    padding-bottom: 12px;
+}
+
+.Resgiter  .form-login img {
+    height: 34px;
+    border-radius: 42px;
+    width: 31%;
+}
+
+.Resgiter .another-login {
+    position: absolute;
+    text-align: center;
+    left: 33%;
+    top: 78%;
+}
+
+.Resgiter  label {
+    font-size: var(--size1);
+}
+
+.Resgiter  .input input {
+    border: none;
+    background-color: #f7f2f2;
+    height: 25px;
+}
+
+
+.Resgiter  span.spin {
+    background-color: #5a726773;
+}
+
+.Resgiter  .input {
+    display: grid;
+    padding-bottom: 18px;
+}
+
+.Resgiter  .Resgiter-title {
+    padding-top: 11px;
+    padding-bottom: 8px;
+}
+
+.Resgiter  .avata-login img {
+    width: 100%;
+    height: 100%;
+}
+
+.Resgiter .avata-login {
+    width: 45%;
+    height: 100%;
+}
+
+.Resgiter .content-login {
+    width: 50%;
+    height: 100%;
+    left: 20px;
+    position: relative;
+    line-height: 32px;
+}
+
+
+.Resgiter .back-login{
+	background-color: #83b6e0c2;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left: 0;
+	position: fixed;
+	z-index: 3;
+}

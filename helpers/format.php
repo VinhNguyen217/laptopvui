@@ -10,9 +10,11 @@ class Format
         return date('F j, Y, g:i a', strtotime($date));
     }
 
-    public function textShorten($text)
+    public function textShorten($text,$limit = 400)
     {
-        $text = substr($text, 0, 20);
+        $text = $text . "  ";  
+        $text = substr($text, 0, $limit);
+        $text = substr($text, 0, strrpoS($text, ' '));
         $text = $text . "...";
         return $text;
     }

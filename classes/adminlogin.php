@@ -1,8 +1,9 @@
 <?php
 include '../libraries/session.php';
 Session::checkLogin();
-require_once '../libraries/database.php';
-require_once '../helpers/format.php';
+$filepath = realpath(dirname(__FILE__));
+require_once ($filepath.'/../libraries/Database.php');
+require_once ($filepath.'/../helpers/format.php');
 ?>
 
 <?php
