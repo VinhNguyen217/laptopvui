@@ -2,11 +2,13 @@
 <?php include '../classes/category.php' ?>
 <?php
 $cat = new Category();
+
 if (!isset($_GET['catId']) || $_GET['catId'] == NULL) {
     echo "<script>window.location = 'category.php'</script>";
 } else {
     $id = $_GET['catId'];
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $category_name = $_POST['category_name'];
 
@@ -44,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
                 <?php
                 $get_cate_name = $cat->getCatById($id);
+
                 if ($get_cate_name) {
                     while ($result = $get_cate_name->fetch_assoc()) {
                 ?>

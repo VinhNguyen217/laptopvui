@@ -1,8 +1,8 @@
 <?php
 include '../libraries/session.php';
 Session::checkLogin();
-include '../libraries/database.php';
-include '../helpers/format.php';
+require_once '../libraries/database.php';
+require_once '../helpers/format.php';
 ?>
 
 <?php
