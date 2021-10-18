@@ -4,9 +4,24 @@
 <div class="main">
 	<div class="header_slide">
 		<div class="header_bottom_left">
-		<?php
-                include "layouts/slidebar.php";
-            ?>
+			<div class="categories">
+				<ul>
+				<h3>Danh Mục</h3>
+				<?php
+					$adr = "producer";
+					
+					$category = $product->get_category ($adr);
+					if($category){
+						while($result_category =$category->fetch_assoc()){
+				?>
+					<li><a href="category.php?catid=<?=$result_category['id_producer']?>"><?=$result_category['nameProducer']?></a></li>
+					<?php
+						}
+					}
+				?>
+				</ul>
+			</div>
+
 		</div>
 		<div class="header_bottom_right">
 			<div class="slider">
@@ -69,7 +84,7 @@
 	<div class="content">
 		<div class="content_top">
 			<div class="heading">
-				<h3>New Products</h3>
+				<h3>Sản Phẩm Mới Nhất</h3>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -87,7 +102,7 @@
 
 			?>
 			<div class="grid_1_of_4 images_1_of_4">
-				<a href="preview.php?proid=<?=$result_new['id_product']?>"><img src="public/frontend/images/feature-pic1.jpg" alt="" /></a>
+				<a href="preview.php?proid=<?=$result_new['id_product']?>"><img src="uploads/<?=$result_new['image']?>" alt="" /></a>
 				<h2><?=$result_new['nameProduct']?></h2>
 				<div class="price-details">
 					<div class="price-number">
@@ -107,7 +122,7 @@
 		</div>
 		<div class="content_bottom">
 			<div class="heading">
-				<h3>Hot Products</h3>
+				<h3>Sản Phẩm Ưa Thích</h3>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -125,7 +140,7 @@
 
 				?>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.php?proid=<?=$result_hot['id_product']?>"><img src="public/frontend/images/feature-pic1.jpg" alt="" /></a>
+					<a href="preview.php?proid=<?=$result_hot['id_product']?>"><img src="uploads/<?=$result_hot['image']?>" alt="" /></a>
 					<h2><?=$result_hot['nameProduct']?></h2>
 					<div class="price-details">
 						<div class="price-number">

@@ -177,18 +177,29 @@ class Product
             return $alert;
         }
     }
+    //lây sản phâm hot
     public function get_product($adr,$id,$name,$nums)
     {
         $query = "SELECT *  FROM $adr WHERE $name = $id ORDER BY id_product DESC LIMIT $nums ";
-        $result = $this->db->delete($query);
+        $result = $this->db->select($query);
         return $result;
     }
+
+    // lây sản phâm theo danh muc 
     public function get_products($adr,$id,$name,$item_per_page,$offset)
     {
         $query = "SELECT *  FROM $adr WHERE $name = $id ORDER BY id_product DESC LIMIT $item_per_page OFFSET $offset";
-        $result = $this->db->delete($query);
+        $result = $this->db->select($query);
         return $result;
     }
+    //lây sản pam theo nhu cau cua danh muc
+    public function get_productss($adr,$id,$name,$item_per_page,$offset)
+    {
+        $query = "SELECT *  FROM $adr WHERE $name = $id ORDER BY id_product DESC LIMIT $item_per_page OFFSET $offset";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    // lay chi tiet san pham theo id
     public function  get_product_preview ($id) {
         $query = "SELECT *  FROM product 
                         join producer on product.id_producer = producer.id_producer 
@@ -197,11 +208,21 @@ class Product
         $result = $this->db->delete($query);
         return $result;
     }
+    // lay danh muc
     public function  get_category ($adr) {
         $query = "SELECT *  FROM $adr ";
         $result = $this->db->select($query);
         return $result;
     }
+    // lay nhu cau theo danh muc
+    public function  get_demand ($id) {
+        $query = "SELECT  DISTINCT product.id_product_type,product.id_producer,product_type.nameProductType FROM product 
+                    join product_type on product.id_product_type = product_type.id_product_type 
+                    WHERE id_producer= $id";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    //Lay sản pham theo danh muc
     public function  get_products_cat ($adr,$id,$name) {
         $query = "SELECT *  FROM $adr where $name = $id ";
         $result = $this->db->number($query);

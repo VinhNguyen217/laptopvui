@@ -29,6 +29,15 @@
     <div class="header_slide">
         <div class="header_bottom_left">
             <?php
+                //   $iid = 0;
+                //   $get_cat = $cat->getCatById($id) ;
+                //   if($get_cat){
+                //       while($result_cat =$get_cat->fetch_assoc()){ 
+                //         // gan id catid
+                //         $iid = $result_cat['id_producer'];
+                //        }
+                //     }        
+
                 include "layouts/slidebar.php";
             ?>
         </div>
@@ -48,7 +57,7 @@
                         while($result_product_cat =$product_cat->fetch_assoc()){
                 ?>
                 <div class="grid_1_of_4 images_1_of_4">
-                    <a href="preview.php?proid=<?=$result_product_cat['id_product']?>"><img src="public/frontend/images/feature-pic1.jpg" alt="" /></a>
+                    <a href="preview.php?proid=<?=$result_product_cat['id_product']?>"><img src="uploads/<?=$result_product_cat['image']?>" alt="" /></a>
                     <h2><?=$result_product_cat['nameProduct']?> </h2>
                     <div class="price-details">
                         <div class="price-number">

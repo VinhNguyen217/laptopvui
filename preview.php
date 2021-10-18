@@ -36,7 +36,7 @@
 				<div class="product-details">
 					<div class="grid images_3_of_2">
 						<div id="products">
-							<li><a href="#"><img  style ="width :100%;margin-top: -15px; "src="public/frontend/images/thumbnailslide-1.jpg" alt=" " /></a>
+							<li><a href="#"><img  style ="width :100%;margin-top: -15px; "src="uploads/<?=$result_preview['image']?>" alt=" " /></a>
 							</li>
 						</div>
 					</div>

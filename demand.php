@@ -18,6 +18,8 @@
         <ul>
             <li><a href="./index.php" style="background: none;padding-left: 0px;">Trang chủ</a></li>
             <li><a>/</a></li>
+            <li><a href="#" style="background: none;padding-left: 0px;"><?=$result_dm['nameProducer']?></a></li>
+            <li><a>/</a></li>
             <li><a href="#" style="background: none;padding-left: 0px;"><?=$result_dm['nameProductType']?></a></li>
         </ul>
     </div>
@@ -41,13 +43,13 @@
                     $offset = ( $current_page - 1)* $item_per_page;
                     $totalRecords = $product->get_products_cat($adr,$id,$name);
                     $totalPage = ceil($totalRecords/$item_per_page);
-                    
+
                     $product_dm = $product->get_products($adr,$id,$name,$item_per_page,$offset);
                     if($product_dm){
                         while($result_product_dm =$product_dm->fetch_assoc()){
                 ?>
                 <div class="grid_1_of_4 images_1_of_4">
-                    <a href="preview.php?proid=<?=$result_product_dm['id_product_type']?>"><img src="public/frontend/images/feature-pic1.jpg" alt="" /></a>
+                    <a href="preview.php?proid=<?=$result_product_dm['id_product_type']?>"><img src="uploads/<?=$result_product_dm['image']?>" alt="" /></a>
                     <h2><?=$result_product_dm['nameProduct']?></h2>
                     <div class="price-details">
                         <div class="price-number">
@@ -74,7 +76,7 @@
             $totalRecords = $product->get_products_cat($adr,$id,$name);
             $totalPage = ceil($totalRecords/$item_per_page);
             $ids = "demandid";
-            include "classes/pagination.php"
+            include "classes/pagination_demand.php"
         ?>
     </div>
     <div class="clear"></div>
