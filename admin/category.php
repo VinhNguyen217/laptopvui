@@ -17,6 +17,7 @@ if (isset($_GET['deleteId'])) {
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
+                List of categories
             </div>
             <div class="card-body">
                 <?php

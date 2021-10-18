@@ -1,5 +1,5 @@
 <?php
-include '../classes/adminlogin.php';
+include '../classes/loginAdmin.php';
 ?>
 <?php
 $class = new AdminLogin();

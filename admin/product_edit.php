@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                                     <label>Name</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="productName" placeholder="Enter Product Name..." class="medium" value="<?php echo $result_product['name'] ?>" required />
+                                    <input type="text" name="productName" placeholder="Enter Product Name..." class="medium" value="<?php echo $result_product['nameProduct'] ?>" required />
                                 </td>
                             </tr>
                             <tr class="divide"></tr>
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                                                         if ($result_cate['id_producer'] == $result_product['id_producer']) {
                                                             echo 'selected';
                                                         }
-                                                        ?> value="<?php echo $result_cate['id_producer'] ?>"><?php echo $result_cate['name'] ?></option>
+                                                        ?> value="<?php echo $result_cate['id_producer'] ?>"><?php echo $result_cate['nameProducer'] ?></option>
 
                                         <?php
                                             }
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                                                         if ($result_productType['id_product_type'] == $result_product['id_product_type']) {
                                                             echo 'selected';
                                                         }
-                                                        ?> value="<?php echo $result_productType['id_product_type'] ?>"><?php echo $result_productType['name'] ?></option>
+                                                        ?> value="<?php echo $result_productType['id_product_type'] ?>"><?php echo $result_productType['nameProductType'] ?></option>
 
                                         <?php
                                             }

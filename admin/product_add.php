@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                                     while ($result = $catList->fetch_assoc()) {
 
                                 ?>
-                                        <option value="<?php echo $result['id_producer'] ?>"><?php echo $result['name'] ?></option>
+                                        <option value="<?php echo $result['id_producer'] ?>"><?php echo $result['nameProducer'] ?></option>
 
                                 <?php
                                     }
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                                     while ($result = $productTypeList->fetch_assoc()) {
 
                                 ?>
-                                        <option value="<?php echo $result['id_product_type'] ?>"><?php echo $result['name'] ?></option>
+                                        <option value="<?php echo $result['id_product_type'] ?>"><?php echo $result['nameProductType'] ?></option>
 
                                 <?php
                                     }
