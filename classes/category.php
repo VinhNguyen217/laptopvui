@@ -27,7 +27,7 @@ class Category
             $alert = '<span style="color:red">Category name already exists</span>';
             return $alert;
         } else {
-            $query = "INSERT INTO producer(id_producer,nameProducer,status) VALUES(null,'$category_name',1) ";
+            $query = "INSERT INTO producer(id_producer,nameProducer) VALUES(null,'$category_name') ";
             $result = $this->db_category->insert($query);
 
             if ($result) {

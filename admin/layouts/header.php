@@ -103,10 +103,6 @@ Session::checkSession();
                             <div class="sb-nav-link-icon"><i class="far fa-user"></i></div>
                             Account
                         </a>
-                        <a class="nav-link" href="new.php">
-                            <div class="sb-nav-link-icon"><i class="far fa-newspaper"></i></div>
-                            News
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

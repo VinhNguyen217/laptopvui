@@ -101,6 +101,7 @@ class Product
         $amount = mysqli_real_escape_string($this->db->link, $data['amount']);
         $top = mysqli_real_escape_string($this->db->link, $data['top']);
         $new = mysqli_real_escape_string($this->db->link, $data['new']);
+        $status = mysqli_real_escape_string($this->db->link, $data['status']);
 
         //Kiểm tra hình ảnh và lấy hình ảnh cho vào folder upload
         $permited = array('jpg', 'jpeg', 'png', 'gif');
@@ -132,7 +133,8 @@ class Product
                 detail = '$detail',
                 image = '$unique_image',
                 top = $top,
-                new = $new
+                new = $new,
+                status = $status
                 WHERE id_product = $id";
             } else {
                 // Nếu người dùng ko chọn ảnh
@@ -144,7 +146,8 @@ class Product
                 amount = $amount,
                 detail = '$detail',
                 top = $top,
-                new = $new
+                new = $new,
+                status = $status
                 WHERE id_product = $id";
             }
 
@@ -177,14 +180,14 @@ class Product
 
     public function get_product($adr, $id, $name, $nums)
     {
-        $query = "SELECT *  FROM $adr WHERE $name = $id ORDER BY id_product DESC LIMIT $nums ";
-        $result = $this->db->delete($query);
+        $query = "SELECT *  FROM $adr WHERE $name = $id and status = 1  ORDER BY id_product DESC LIMIT $nums ";
+        $result = $this->db->select($query);
         return $result;
     }
     public function get_products($adr, $id, $name, $item_per_page, $offset)
     {
-        $query = "SELECT *  FROM $adr WHERE $name = $id ORDER BY id_product DESC LIMIT $item_per_page OFFSET $offset";
-        $result = $this->db->delete($query);
+        $query = "SELECT *  FROM $adr WHERE $name = $id and status = 1 ORDER BY id_product ASC LIMIT $item_per_page OFFSET $offset";
+        $result = $this->db->select($query);
         return $result;
     }
     public function  get_product_preview($id)
@@ -192,7 +195,7 @@ class Product
         $query = "SELECT *  FROM product 
                         join producer on product.id_producer = producer.id_producer 
                         join product_type on product.id_product_type = product_type.id_product_type 
-                         WHERE id_product = $id";
+                         WHERE id_product = $id ";
         $result = $this->db->delete($query);
         return $result;
     }
@@ -202,10 +205,29 @@ class Product
         $result = $this->db->select($query);
         return $result;
     }
-    public function  get_products_cat($adr, $id, $name)
+    public function get_products_cat($adr, $id, $name)
     {
-        $query = "SELECT *  FROM $adr where $name = $id ";
+        $query = "SELECT *  FROM $adr where $name = $id and status =1 ";
         $result = $this->db->number($query);
+        return $result;
+    }
+
+    //lây sản pam theo nhu cau cua danh muc
+    public function get_productss($id, $catid, $item_per_page, $offset)
+    {
+        $query = "SELECT *  FROM product                            
+                WHERE id_product_type = $id and status = 1 and id_producer = $catid ORDER BY id_product DESC LIMIT $item_per_page OFFSET $offset";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    // lay nhu cau theo danh muc
+    public function  get_demand($id)
+    {
+        $query = "SELECT  DISTINCT product.id_product_type,product.id_producer,product_type.nameProductType FROM product 
+                    join product_type on product.id_product_type = product_type.id_product_type 
+                    WHERE id_producer= $id";
+        $result = $this->db->select($query);
         return $result;
     }
 }

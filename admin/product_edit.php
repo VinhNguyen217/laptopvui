@@ -207,6 +207,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             </tr>
                             <tr class="divide"></tr>
                             <tr>
+                                <td><label>Display</label></td>
+                                <td>
+                                    <select id="select" name="status">
+                                        <?php
+                                        if ($result_product['status'] == 1) {
+                                        ?>
+                                            <option selected value="1">Active</option>
+                                            <option value="0">Not Active</option>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <option value="1">Active</option>
+                                            <option selected value="0">Not Active</option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="divide"></tr>
+                            <tr>
                                 <td><label></label></td>
                                 <td><input type="submit" name="submit" value="UPDATE" class="btn btn-primary" /></td>
                             </tr>

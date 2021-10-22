@@ -87,12 +87,7 @@ if (isset($_GET['productId'])) {
                     </tfoot>
                     <tbody>
                         <?php
-                        // $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
-                        // $current_page =  !empty($_GET['page']) ? $_GET['page'] : 1;  //số trang hiện tại
-                        // $offset = ($current_page - 1) * $item_per_page; //Tính Offset
                         $pdlist = $pd->show_product_pagination();
-                        // $totalRecords = $pd->show_product()->num_rows;  //Tổng số bản ghi
-                        // $totalPages = ceil($totalRecords / $item_per_page);
                         if ($pdlist) {
                             while ($result = $pdlist->fetch_assoc()) {
                         ?>
@@ -108,10 +103,11 @@ if (isset($_GET['productId'])) {
                                     <td style="text-align: center;">
                                         <?php
                                         if ($result['status'] == 1) {
-                                            echo '<input type="checkbox" name="status" checked />';
+                                            echo "Active";
                                         } else {
-                                            echo '<input type="checkbox" name="status"/>';
+                                            echo "Not Active";
                                         }
+
                                         ?>
                                     </td>
                                     <td style="text-align: center;">

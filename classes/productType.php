@@ -27,7 +27,7 @@ class ProductType
             $alert = '<span style="color:red">Product type already exists</span>';
             return $alert;
         } else {
-            $query = "INSERT INTO product_type(id_product_type,nameProductType,status) VALUES(null,'$productType_name',1) ";
+            $query = "INSERT INTO product_type(id_product_type,nameProductType) VALUES(null,'$productType_name') ";
             $result = $this->db_productType->insert($query);
 
             if ($result) {
@@ -74,7 +74,11 @@ class ProductType
      */
     public function getProductTypeById($id)
     {
-        $query = "SELECT * FROM product_type WHERE id_product_type = '$id'";
+        $query = "SELECT * FROM product join product_type 
+                                        on product.id_product_type = product_type.id_product_type
+                                        join producer
+                                        on product.id_producer = producer.id_producer
+                                        WHERE product.id_product_type = '$id'";
         $result = $this->db_productType->select($query);
         return $result;
     }
@@ -118,6 +122,13 @@ class ProductType
             $alert = '<script language="javascript">alert("Product Type Deleted Not Successfully !!!"); window.location="productType.php";</script>';
             return $alert;
         }
+    }
+
+    public function getProductTypeByIdd($id)
+    {
+        $query = "SELECT * FROM product_type WHERE id_product_type = '$id'";
+        $result = $this->db_productType->select($query);
+        return $result;
     }
 }
 

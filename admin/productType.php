@@ -30,7 +30,6 @@ if (isset($_GET['deleteId'])) {
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Display</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -38,7 +37,6 @@ if (isset($_GET['deleteId'])) {
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Display</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -52,14 +50,6 @@ if (isset($_GET['deleteId'])) {
                                     <td><?php echo $result['id_product_type']; ?></td>
                                     <td>
                                         <?php echo $result['nameProductType'] ?>
-                                    </td>
-                                    <td><?php
-                                        if ($result['status'] == 1) {
-                                            echo '<input type="checkbox" name="status" checked />';
-                                        } else {
-                                            echo '<input type="checkbox" name="status"/>';
-                                        }
-                                        ?>
                                     </td>
                                     <td><a href="productType_edit.php?productTypeId=<?php echo $result['id_product_type'] ?>">Edit</a> || <a onclick="return confirm('Are you want to delete?')" href="?deleteId=<?php echo $result['id_product_type'] ?>">Delete</a></td>
                                 </tr>
