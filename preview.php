@@ -7,6 +7,10 @@
 	} else {
 		$id = $_GET['proid'];
 	}
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+		$quantity = $_POST['quantity'];
+		$addtocart = $ct->add_to_cart($quantity,$id);
+	}
 ?>
 <div class="main">
 	<div class="content">
@@ -54,7 +58,13 @@
 									<li><a href="#"><img src="public/frontend/images/twitter.png" alt="" /></a></li>
 								</ul>
 							</div>
-							<div class="button"><span><a href="#">Add to Cart</a></span></div>
+							<div class="add_cart">
+								<form action="" method = "post">
+									<input type="number"  name = "quantity" value = "1" min = "1">
+									<input type="submit" name = "submit"  class="button" value = "Add to cart">
+
+								</form>
+							</div>
 							<div class="clear"></div>
 						</div>
 					</div>
@@ -257,87 +267,7 @@
 	
 	
 	</div>
-	<style>
-        .main_title {
-            font-size: 12px;
-        }
-
-        .main_title ul {
-            list-style: none;
-            margin: 10px;
-            display: block;
-        }
-
-        .main_title ul li {
-            float: left;
-        }
-
-        .main_title ul li a {
-            line-height: 35px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #555;
-            padding: 0px 10px;
-        }
-
-        .main_title ul li a:hover {
-            color: red;
-        }
-
-        .filter {
-            border: 1px solid #EEE;
-        }
-
-        .filter h3 {
-            text-align: left;
-            line-height: 32px;
-            padding: 5px;
-            font-size: 20px;
-            font-weight: 500;
-            background: #243a76;
-            color: #fff;
-        }
-
-        .filter ul li {
-            display: block;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .filter ul li a {
-            display: block;
-            font-size: 0.8em;
-            padding: 8px 15px;
-            color: #9C9C9C;
-            font-family: 'inherit';
-            margin: 0 20px;
-            background: url(./images/drop_arrow.png) no-repeat 0;
-            border-bottom: 1px solid #EEE;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .filter ul li a:hover {
-            color: red;
-        }
-
-        .content_category {
-            margin-top: -7px;
-        }
-
-        .grid_1_of_4:nth-child(5) {
-            margin-left: 0;
-        }
-
-        .grid_1_of_4:nth-child(9) {
-            margin-left: 0;
-        }
-		.rightsidebar.span_3_of_1 {
-			margin-top: 28px;
-		}
-	</style>
+	
 	<script>
 		$(function () {
 			$('#products').slides({

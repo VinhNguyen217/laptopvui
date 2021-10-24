@@ -1,6 +1,7 @@
 <?php
 	include "layouts/header.php"
 ?>
+
 <div class="main">
 	<div class="header_slide">
 		<div class="header_bottom_left">
@@ -109,6 +110,7 @@
 						<p><span class="rupees"><?=$result_new['price']?></span></p>
 					</div>
 					<div class="add-cart">
+						
 						<a href="preview.php?proid=<?=$result_new['id_product']?>"><img src="public/frontend/images/cart.png" /></a>
 					</div>
 					<div class="clear"></div>
