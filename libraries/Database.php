@@ -1,6 +1,5 @@
 <?php
- $filepath = realpath(dirname(__FILE__));
- 
+$filepath = realpath(dirname(__FILE__));
 ?>
 
 
@@ -87,10 +86,7 @@ class Database
     {
         $result = $this->link->query($query) or
             die($this->link->error . __LINE__);
-            $result = $result->num_rows ;
-            return $result;
-        
+        $result = $result->num_rows;
+        return $result;
     }
-
-
 }

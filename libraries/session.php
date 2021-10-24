@@ -32,6 +32,7 @@ class Session
         }
     }
 
+
     public static function checkSession()
     {
         self::init();
