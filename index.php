@@ -1,6 +1,7 @@
 <?php
 include "layouts/header.php"
 ?>
+
 <div class="main">
 	<div class="header_slide">
 		<div class="header_bottom_left">

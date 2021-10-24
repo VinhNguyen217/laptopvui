@@ -22,13 +22,6 @@ $(document).ready(function () {
     $(" .exit-login").click(function (e) { 
         $('.Infor').addClass('after-onclick-exit-login')
         
-    });
-    $(".cart").click(function (e) { 
-        $('.Cart').removeClass('after-onclick-exit-login')
-        
-    });
-    $(" .exit-login").click(function (e) { 
-        $('.Cart').addClass('after-onclick-exit-login')
-        
-    });
+    }); 
+   
 });

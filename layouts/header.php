@@ -13,8 +13,16 @@ Session::init();
     $ct = new Cart();
     $us = new User();
     $cat = new Category();
+	$cs = new Customer();
     $product = new Product();
     $demand = new ProductType();
+?>
+<?php
+	if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+		Session::destroy1();
+		
+		
+	}
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -25,9 +33,8 @@ Session::init();
 	<link href="public/frontend/css/slider.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="public/frontend/css/Cart.css">
     <link rel="stylesheet" href="public/frontend/css/info.css">
-    <link rel="stylesheet" href="public/frontend/css/resgiter.css">
-    <link rel="stylesheet" href="public/frontend/css/login.css">
     <link rel="stylesheet" href="public/frontend/css/pay.css">
+	<link rel="stylesheet" href="public/frontend/css/header_bottom.css">
 	<script type="text/javascript" src="public/frontend/js/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="public/frontend/js/move-top.js"></script>
 	<script type="text/javascript" src="public/frontend/js/easing.js"></script>
@@ -45,6 +52,10 @@ Session::init();
 </head>
 
 <body>
+	<?php 
+		$check_login = Session:: get('customer_login');
+	?>
+
 	<div class="wrap">
 		<div class="header">
 			<div class="headertop_desc">
@@ -53,9 +64,23 @@ Session::init();
 				</div>
 				<div class="account_desc">
 					<ul>
-                        <li><a href="#" class = "Info-click">Đăng </a></li>
-						<li><a href="#" class = "Register-click">Đăng Ký</a></li>
-						<li><a href="#" class = "Login-click">Đăng Nhập</a></li>
+                        <li><a href="" class = "Info-click">Đăng </a></li>
+						<li>
+							<?php
+								if($check_login == false)
+									echo '<a href="resgiter.php" >Đăng Ký</a>';					
+							?>					
+						</li>
+						<li>
+							<?php
+								if($check_login == false)
+									echo '<a href="login.php">Đăng Nhập</a>';
+								else
+									{
+										echo '<a href="?action=logout">Đăng Xuất</a>';
+									}								
+							?>
+						</li>
 					</ul>
 				</div>
 				<div class="clear"></div>
@@ -65,7 +90,7 @@ Session::init();
 					<a href="index.php"><img src="public/frontend/images/logo.png" alt="" /></a>
 				</div>
 				<div class="cart">
-					<a href="#">
+					<a href="cart.php">
 						<img src="public/frontend/images/bag.png" />
 						<span class="title">Giỏ Hàng</span>
 						<span class="product-count">0</span>
@@ -122,23 +147,4 @@ Session::init();
 				<div class="clear"></div>
 			</div>
 		</div>
-        <div class="Login after-onclick-exit-login">
-            <?php
-                include "login.php"
-            ?>
-        </div>
-        <div class="Resgiter after-onclick-exit-login">
-            <?php
-                include "resgiter.php"
-            ?>
-        </div>
-        <div class="Infor after-onclick-exit-login ">
-            <?php
-                include "info.php "
-            ?>  
-        </div>
-        <div class="Cart after-onclick-exit-login">
-            <?php
-                include "cart.php"
-            ?>
-        </div>
+      
