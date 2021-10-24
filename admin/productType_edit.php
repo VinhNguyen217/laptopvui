@@ -43,10 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 ?>
                 <?php
-                $get_productType_name = $productType->getProductTypeById($id);
+                $get_productType_name = $productType->getProductTypeByIdd($id);
                 if ($get_productType_name) {
                     while ($result = $get_productType_name->fetch_assoc()) {
                 ?>
+
                         <form action="" method="POST" class="productType_add">
                             <div class="form-group">
                                 <input type="text" value="<?php echo $result['nameProductType'] ?>" class="form-control" aria-describedby="emailHelp" name="productType_name" placeholder="Enter product types name..." required>

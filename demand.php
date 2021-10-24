@@ -1,82 +1,82 @@
 <?php
-	include "layouts/header.php"
+include "layouts/header.php"
 ?>
 <?php
-	if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
-		echo "<script>window.location = 'index.php'</script>";
-	} else {
-		$id = $_GET['demandid'];
-	}
+if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
+    echo "<script>window.location = 'index.php'</script>";
+} else {
+    $id = $_GET['demandid'];
+}
 ?>
 <div class="main">
     <?php
-        $get_dm = $demand->getProductTypeById($id);
-        if($get_dm){
-            while($result_dm =$get_dm->fetch_assoc()){
+    $get_dm = $demand->getProductTypeById($id);
+    if ($get_dm) {
+        $result_dm = $get_dm->fetch_assoc()
     ?>
-    <div class="main_title">
-        <ul>
-            <li><a href="./index.php" style="background: none;padding-left: 0px;">Trang chủ</a></li>
-            <li><a>/</a></li>
-            <li><a href="#" style="background: none;padding-left: 0px;"><?=$result_dm['nameProducer']?></a></li>
-            <li><a>/</a></li>
-            <li><a href="#" style="background: none;padding-left: 0px;"><?=$result_dm['nameProductType']?></a></li>
-        </ul>
-    </div>
+        <div class="main_title">
+            <ul>
+                <li><a href="./index.php" style="background: none;padding-left: 0px;">Trang chủ</a></li>
+                <li><a>/</a></li>
+                <li><a href="category.php?catid=<?= $result_dm['id_producer'] ?>" style="background: none;padding-left: 0px;"><?= $result_dm['nameProducer'] ?></a></li>
+                <li><a>/</a></li>
+                <li><a href="#" style="background: none;padding-left: 0px;"><?= $result_dm['nameProductType'] ?></a></li>
+            </ul>
+        </div>
     <?php
-            }
-        }
+    }
     ?>
     <div class="header_slide">
         <div class="header_bottom_left">
-             <?php
-                include "layouts/slidebar.php";
+            <?php
+            include "layouts/slidebar.php";
             ?>
         </div>
         <div class="header_bottom_right">
             <div class="content_category">
                 <?php
-                    $adr = "product";
-                    $name = "id_product_type";
-                    $item_per_page = !empty($_GET['per_page'])?$_GET['per_page']:4;
-                    $current_page =  !empty($_GET['page'])?$_GET['page']:1;
-                    $offset = ( $current_page - 1)* $item_per_page;
-                    $totalRecords = $product->get_products_cat($adr,$id,$name);
-                    $totalPage = ceil($totalRecords/$item_per_page);
+                $adr = "product";
+                $name = "id_product_type";
+                $catid = $_GET['catid'];
+                $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
+                $current_page =  !empty($_GET['page']) ? $_GET['page'] : 1;
+                $offset = ($current_page - 1) * $item_per_page;
+                $totalRecords = $product->get_products_cat($adr, $id, $name);
+                $totalPage = ceil($totalRecords / $item_per_page);
 
-                    $product_dm = $product->get_products($adr,$id,$name,$item_per_page,$offset);
-                    if($product_dm){
-                        while($result_product_dm =$product_dm->fetch_assoc()){
+                $product_dm = $product->get_productss($id, $catid, $item_per_page, $offset);
+                if ($product_dm) {
+                    while ($result_product_dm = $product_dm->fetch_assoc()) {
                 ?>
-                <div class="grid_1_of_4 images_1_of_4">
-                    <a href="preview.php?proid=<?=$result_product_dm['id_product_type']?>"><img src="uploads/<?=$result_product_dm['image']?>" alt="" /></a>
-                    <h2><?=$result_product_dm['nameProduct']?></h2>
-                    <div class="price-details">
-                        <div class="price-number">
-                            <p><span class="rupees"><?=$result_product_dm['price']?>   VND</span></p>
-                        </div>
-                        <div class="add-cart">
-                            <a href="preview.php"><img src="public/frontend/images/cart.png" /></a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+                        <div class="grid_1_of_4 images_1_of_4">
+                            <a href="preview.php?proid=<?= $result_product_dm['id_product'] ?>"><img src="uploads/<?= $result_product_dm['image'] ?>" alt="" /></a>
+                            <h2><?= $result_product_dm['nameProduct'] ?></h2>
+                            <div class="price-details">
+                                <div class="price-number">
+                                    <p><span class="rupees"><?= $result_product_dm['price'] ?> VND</span></p>
+                                </div>
+                                <div class="add-cart">
+                                    <a href="preview.php"><img src="public/frontend/images/cart.png" /></a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
 
-                </div>
+                        </div>
                 <?php
-                        }
                     }
-                ?>  
+                }
+                ?>
             </div>
         </div>
         <?php
 
-            $item_per_page = !empty($_GET['per_page'])?$_GET['per_page']:4;
-            $current_page =  !empty($_GET['page'])?$_GET['page']:1;
-            $offset = ( $current_page - 1)* $item_per_page;
-            $totalRecords = $product->get_products_cat($adr,$id,$name);
-            $totalPage = ceil($totalRecords/$item_per_page);
-            $ids = "demandid";
-            include "classes/pagination_demand.php"
+        $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
+        $current_page =  !empty($_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($current_page - 1) * $item_per_page;
+        $totalRecords = $product->get_products_cat($adr, $id, $name);
+        $totalPage = ceil($totalRecords / $item_per_page);
+        $ids = "demandid";
+        include "classes/pagination_demand.php"
         ?>
     </div>
     <div class="clear"></div>
@@ -84,8 +84,8 @@
         .main_title {
             font-size: 12px;
             width: 100%;
-			border: 0.5px #eceaea solid;
-			height: 55px;
+            border: 0.5px #eceaea solid;
+            height: 55px;
         }
 
         .main_title ul {
@@ -160,9 +160,9 @@
         .grid_1_of_4:nth-child(9) {
             margin-left: 0;
         }
-        </style>
+    </style>
 </div>
 
 <?php
-	include "layouts/footer.php"
+include "layouts/footer.php"
 ?>

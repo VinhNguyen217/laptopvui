@@ -1,7 +1,7 @@
 <?php
- $filepath = realpath(dirname(__FILE__));
- require_once ($filepath.'/../libraries/Database.php');
- require_once ($filepath.'/../helpers/format.php');
+$filepath = realpath(dirname(__FILE__));
+require_once($filepath . '/../libraries/Database.php');
+require_once($filepath . '/../helpers/format.php');
 ?>
 
 <?php
@@ -15,6 +15,9 @@ class Category
         $this->fm = new Format();
     }
 
+    /**
+     * Thêm nha sản xuất
+     */
     public function insert_category($category_name)
     {
         $category_name = $this->fm->validation($category_name);
@@ -24,7 +27,7 @@ class Category
             $alert = '<span style="color:red">Category name already exists</span>';
             return $alert;
         } else {
-            $query = "INSERT INTO producer(id_producer,nameProducer,status) VALUES(null,'$category_name',1) ";
+            $query = "INSERT INTO producer(id_producer,nameProducer) VALUES(null,'$category_name') ";
             $result = $this->db_category->insert($query);
 
             if ($result) {
@@ -38,7 +41,7 @@ class Category
     }
 
     /**
-     * Kiểm tra tên danh mục có tồn tại hay không , nếu có => return true,nếu không => return false
+     * Kiểm tra tên nhà sản xuất có tồn tại hay không , nếu có => return true,nếu không => return false
      */
     public function check_category($category_name)
     {
@@ -61,13 +64,13 @@ class Category
      */
     public function show_category()
     {
-        $query = "SELECT * FROM producer ORDER BY id_producer DESC";
+        $query = "SELECT * FROM producer ORDER BY id_producer ASC";
         $result = $this->db_category->select($query);
         return $result;
     }
 
     /**
-     * Trả về 1 danh mục khi biết id
+     * Trả về nhà sản xuất khi biết id
      */
     public function getCatById($id)
     {
@@ -76,6 +79,9 @@ class Category
         return $result;
     }
 
+    /**
+     * Cập nhật nhà sản xuất khi biết id
+     */
     public function update_category($category_name, $id)
     {
         $category_name = $this->fm->validation($category_name);
@@ -98,6 +104,9 @@ class Category
         }
     }
 
+    /**
+     * Xóa 1 nhà sản xuất khi biết id
+     */
     public function delete_category($id)
     {
         $query = "DELETE FROM producer WHERE id_producer = '$id'";
@@ -110,7 +119,6 @@ class Category
             return $alert;
         }
     }
-
 }
 
 ?>

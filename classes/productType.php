@@ -1,7 +1,7 @@
 <?php
- $filepath = realpath(dirname(__FILE__));
- require_once ($filepath.'/../libraries/Database.php');
- require_once ($filepath.'/../helpers/format.php');
+$filepath = realpath(dirname(__FILE__));
+require_once($filepath . '/../libraries/Database.php');
+require_once($filepath . '/../helpers/format.php');
 ?>
 
 <?php
@@ -27,7 +27,7 @@ class ProductType
             $alert = '<span style="color:red">Product type already exists</span>';
             return $alert;
         } else {
-            $query = "INSERT INTO product_type(id_product_type,nameProductType,status) VALUES(null,'$productType_name',1) ";
+            $query = "INSERT INTO product_type(id_product_type,nameProductType) VALUES(null,'$productType_name') ";
             $result = $this->db_productType->insert($query);
 
             if ($result) {
@@ -64,7 +64,7 @@ class ProductType
      */
     public function show_productType()
     {
-        $query = "SELECT * FROM product_type ORDER BY id_product_type DESC";
+        $query = "SELECT * FROM product_type ORDER BY id_product_type ASC";
         $result = $this->db_productType->select($query);
         return $result;
     }
@@ -123,7 +123,13 @@ class ProductType
             return $alert;
         }
     }
-    
+
+    public function getProductTypeByIdd($id)
+    {
+        $query = "SELECT * FROM product_type WHERE id_product_type = '$id'";
+        $result = $this->db_productType->select($query);
+        return $result;
+    }
 }
 
 ?>

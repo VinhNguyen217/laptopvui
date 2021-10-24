@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
                         <form action="" method="POST" class="category_add">
                             <div class="form-group">
-                                <input type="text" value="<?php echo $result['name'] ?>" class="form-control" aria-describedby="emailHelp" name="category_name" placeholder="Enter category name..." required>
+                                <input type="text" value="<?php echo $result['nameProducer'] ?>" class="form-control" aria-describedby="emailHelp" name="category_name" placeholder="Enter category name..." required>
                             </div>
                             <input type="submit" name="submit" class="btn btn-primary" value="UPDATE" />
                         </form>

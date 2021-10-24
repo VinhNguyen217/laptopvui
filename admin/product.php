@@ -52,73 +52,94 @@ if (isset($_GET['productId'])) {
             </div>
             <div class="card-body">
 
-                <table id="products">
-                    <tr>
-                        <th>Id</th>
-                        <th>Category</th>
-                        <th>Product Type</th>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                        <th>Display</th>
-                        <th>Top</th>
-                        <th>Newtest</th>
-                        <th>Action</th>
-                    </tr>
-                    <?php
-                    $pdlist = $pd->show_product();
-                    if ($pdlist) {
-                        $i = 0;
-                        while ($result = $pdlist->fetch_assoc()) {
-                            $i++;
-                    ?>
-                            <tr>
-                                <td><?php echo $result['id_product'] ?></td>
-                                <td><?php echo $result['producer_name'] ?></td>
-                                <td><?php echo $result['product_type_name'] ?></td>
-                                <td><?php echo $result['name'] ?></td>
-                                <td><img src="../uploads/<?php echo $result['image'] ?>" style="width: 50px;" /></td>
-                                <td style="text-align: center;"><?php echo $result['amount'] ?></td>
-                                <td><?php echo $result['price'] ?></td>
-                                <td><?php echo $fm->textShorten($result['detail']) ?></td>
-                                <td style="text-align: center;">
-                                    <?php
-                                    if ($result['status'] == 1) {
-                                        echo '<input type="checkbox" name="status" checked />';
-                                    } else {
-                                        echo '<input type="checkbox" name="status"/>';
-                                    }
-                                    ?>
-                                </td>
-                                <td style="text-align: center;">
-                                    <?php
-                                    if ($result['top'] == 1) {
-                                        echo "Active";
-                                    } else {
-                                        echo "Not Active";
-                                    }
-                                    ?>
-                                </td>
-                                <td style="text-align: center;">
-                                    <?php
-                                    if ($result['new'] == 1) {
-                                        echo "Active";
-                                    } else {
-                                        echo "Not Active";
-                                    }
-                                    ?>
-                                </td>
-                                <td><a href="product_edit.php?productId=<?php echo $result['id_product'] ?>">Edit</a> ||
-                                    <a onclick="return confirm('Are you want to delete?')" href="?productId=<?php echo $result['id_product'] ?>">Delete</a>
-                                </td>
-                            </tr>
-                    <?php
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Category</th>
+                            <th>Product Type</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Display</th>
+                            <th>Top</th>
+                            <th>Newtest</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Category</th>
+                            <th>Product Type</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Display</th>
+                            <th>Top</th>
+                            <th>Newtest</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <?php
+                        $pdlist = $pd->show_product_pagination();
+                        if ($pdlist) {
+                            while ($result = $pdlist->fetch_assoc()) {
+                        ?>
+                                <tr>
+                                    <td><?php echo $result['id_product'] ?></td>
+                                    <td><?php echo $result['nameProducer'] ?></td>
+                                    <td><?php echo $result['nameProductType'] ?></td>
+                                    <td><?php echo $result['nameProduct'] ?></td>
+                                    <td><img src="../uploads/<?php echo $result['image'] ?>" style="width: 50px;" /></td>
+                                    <td style="text-align: center;"><?php echo $result['amount'] ?></td>
+                                    <td><?php echo $result['price'] ?></td>
+                                    <td><?php echo $fm->textShortenAdmin($result['detail']) ?></td>
+                                    <td style="text-align: center;">
+                                        <?php
+                                        if ($result['status'] == 1) {
+                                            echo "Active";
+                                        } else {
+                                            echo "Not Active";
+                                        }
+
+                                        ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php
+                                        if ($result['top'] == 1) {
+                                            echo "Active";
+                                        } else {
+                                            echo "Not Active";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php
+                                        if ($result['new'] == 1) {
+                                            echo "Active";
+                                        } else {
+                                            echo "Not Active";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><a href="product_edit.php?productId=<?php echo $result['id_product'] ?>">Edit</a> ||
+                                        <a onclick="return confirm('Are you want to delete?')" href="?productId=<?php echo $result['id_product'] ?>">Delete</a>
+                                    </td>
+                                </tr>
+                        <?php
+                            }
                         }
-                    }
-                    ?>
+                        ?>
+                    </tbody>
+
                 </table>
+                <?php ?>
             </div>
         </div>
     </div>
