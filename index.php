@@ -10,7 +10,6 @@ include "layouts/header.php"
 					<h3>Danh Mục</h3>
 					<?php
 					$adr = "producer";
-
 					$category = $product->get_category($adr);
 					if ($category) {
 						while ($result_category = $category->fetch_assoc()) {

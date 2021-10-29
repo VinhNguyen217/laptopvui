@@ -12,9 +12,11 @@ if (!isset($_GET['productId']) || $_GET['productId'] == NULL) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-
     $updateProduct = $pd->update_product($_POST, $_FILES, $id);
 }
+
+$product = $pd->getProductById($id);
+$product_val = $product->fetch_assoc();
 ?>
 <style>
     .divide {
@@ -44,14 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 </style>
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Product</h1>
+        <h1 class="mt-4">Chi tiết sản phẩm</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Edit Product</li>
+            <li class="breadcrumb-item"><a href="product.php">Danh sách sản phẩm</a></li>
+            <li class="breadcrumb-item active"><?php echo $product_val['nameProduct'] ?></li>
         </ol>
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            Edit Product
+            Chỉnh sửa
         </div>
         <div class="card-body">
             <?php
@@ -68,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         <table class="form">
                             <tr>
                                 <td>
-                                    <label>Name</label>
+                                    <label>Tên sản phẩm</label>
                                 </td>
                                 <td>
                                     <input type="text" name="productName" placeholder="Enter Product Name..." class="medium" value="<?php echo $result_product['nameProduct'] ?>" required />
@@ -77,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             <tr class="divide"></tr>
                             <tr>
                                 <td>
-                                    <label>Category</label>
+                                    <label>Danh mục</label>
                                 </td>
                                 <td>
                                     <select id="select" name="category">
@@ -106,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             <tr class="divide"></tr>
                             <tr>
                                 <td>
-                                    <label>Product Type</label>
+                                    <label>Loại sản phẩm</label>
                                 </td>
                                 <td>
                                     <select id="select" name="productType">
@@ -135,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             <tr class="divide"></tr>
                             <tr>
                                 <td>
-                                    <label>Description</label>
+                                    <label>Mô tả</label>
                                 </td>
                                 <td>
                                     <textarea name="productDesc" class="tinymce"><?php echo $result_product['detail'] ?></textarea>
@@ -143,17 +145,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             </tr>
                             <tr class="divide"></tr>
                             <tr>
-                                <td><label>Price</label></td>
+                                <td><label>Giá tiền</label></td>
                                 <td><input type="number" name="price" placeholder="Enter Price..." required value="<?php echo $result_product['price'] ?>" /></td>
                             </tr>
                             <tr class="divide"></tr>
                             <tr>
-                                <td><label>Amount</label></td>
+                                <td><label>Số lượng</label></td>
                                 <td><input type="number" name="amount" placeholder="Enter Amount..." required value="<?php echo $result_product['amount'] ?>" /></td>
                             </tr>
                             <tr class="divide"></tr>
                             <tr>
-                                <td><label>Upload Image</label></td>
+                                <td><label>Ảnh</label></td>
                                 <td>
                                     <img src="../uploads/<?php echo $result_product['image'] ?>" width="120" /></br>
                                     <input name="image" type="file" />
@@ -161,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             </tr>
                             <tr class="divide"></tr>
                             <tr>
-                                <td><label>Top Hot</label></td>
+                                <td><label>Sản phẩm hàng đầu</label></td>
                                 <td>
                                     <select id="select" name="top">
                                         <?php
@@ -184,34 +186,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             </tr>
                             <tr class="divide"></tr>
                             <tr>
-                                <td><label>Newtest</label></td>
+                                <td><label>Sản phẩm mới nhất</label></td>
                                 <td>
                                     <select id="select" name="new">
                                         <?php
                                         if ($result_product['new'] == 1) {
-
-
-                                        ?>
-                                            <option selected value="1">Active</option>
-                                            <option value="0">Not Active</option>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <option value="1">Active</option>
-                                            <option selected value="0">Not Active</option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr class="divide"></tr>
-                            <tr>
-                                <td><label>Display</label></td>
-                                <td>
-                                    <select id="select" name="status">
-                                        <?php
-                                        if ($result_product['status'] == 1) {
                                         ?>
                                             <option selected value="1">Active</option>
                                             <option value="0">Not Active</option>
@@ -229,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             <tr class="divide"></tr>
                             <tr>
                                 <td><label></label></td>
-                                <td><input type="submit" name="submit" value="UPDATE" class="btn btn-primary" /></td>
+                                <td><input type="submit" name="submit" value="Cập nhật" class="btn btn-primary" /></td>
                             </tr>
                             <tr class="divide"></tr>
                         </table>

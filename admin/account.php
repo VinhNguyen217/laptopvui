@@ -5,12 +5,18 @@ require_once '../classes/user.php';
 <?php
 $user = new User();
 ?>
+<style>
+    #datatablesSimple th,
+    td {
+        text-align: center;
+    }
+</style>
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Account</h1>
+        <h1 class="mt-4">Tài khoản khách hàng</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Accounts</li>
+            <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
+            <li class="breadcrumb-item active">Danh sách tài khoản </li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
@@ -22,25 +28,25 @@ $user = new User();
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Name</th>
-                            <th>Address</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Mật khẩu</th>
+                            <th>Tên</th>
+                            <th>Địa chỉ</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Active</th>
+                            <th>Số điện thoại</th>
+                            <th>Kích hoạt</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Name</th>
-                            <th>Address</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Mật khẩu</th>
+                            <th>Tên</th>
+                            <th>Địa chỉ</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Active</th>
+                            <th>Số điện thoại</th>
+                            <th>Kích hoạt</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -69,16 +75,9 @@ $user = new User();
                                     <td>
                                         <?php echo $result['phone'] ?>
                                     </td>
-                                    <td style="text-align: center;">
-                                        <?php
-                                        if ($result['active'] == 1) {
-                                            echo '<input type="checkbox" name="active" value="1" checked />';
-                                        } else {
-                                            echo '<input type="checkbox" name="active" value="0"/>';
-                                        }
-                                        ?>
+                                    <td>
+                                        <input class="handle_account" type="checkbox" data-account_id="<?= $result['id_user'] ?>" value="<?= $result['active'] ?>" <?php echo ($result['active'] == 1 ? 'checked' : ''); ?> />
                                     </td>
-
                                 </tr>
                         <?php
                             }
@@ -90,6 +89,28 @@ $user = new User();
         </div>
     </div>
 </main>
+<script>
+    $(document).ready(function() {
+        $('input.handle_account').click(function() {
+            var id = $(this).data('account_id');
+            var status = $(this).val();
+            $.ajax({
+                url: '../helpers/handle_account.php',
+                type: 'GET',
+                data: {
+                    id: id,
+                    status: status
+                },
+                success: function(data) {
+                    if (data == true)
+                        alert("update success !!!");
+                    else
+                        alert("update fail !!!");
+                }
+            })
+        })
+    });
+</script>
 <?php
 include('./layouts/footer.php');
 ?>

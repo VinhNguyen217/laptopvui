@@ -1,5 +1,5 @@
 <?php
-	include "layouts/header.php"
+include "layouts/header.php"
 ?>
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
@@ -37,7 +37,7 @@
         </ul>
  </div>
 <div class="content-pay">
-    
+
     <div class="products-pay">
         <div class="modal-body">
             <div class="cart-row">
@@ -121,8 +121,7 @@
         ?>
             
     </div>
-</div> 
+</div>
 <?php
-	include "layouts/footer.php"
+include "layouts/footer.php"
 ?>
-

@@ -1,11 +1,11 @@
 <?php
-    $filepath = realpath(dirname(__FILE__));
-    require_once ($filepath.'/../libraries/Database.php');
-    require_once ($filepath.'/../helpers/format.php');
+$filepath = realpath(dirname(__FILE__));
+require_once($filepath . '/../libraries/Database.php');
+require_once($filepath . '/../helpers/format.php');
 ?>
 
 <?php
-class Customer 
+class Customer
 {
     private $db;
     private $fm;
@@ -20,24 +20,19 @@ class Customer
         $password = mysqli_real_escape_string($this->db->link, md5($data['password']));
         $repeat_password = mysqli_real_escape_string($this->db->link, md5($data['confirm-password']));
         $email = mysqli_real_escape_string($this->db->link, $data['email']);
-        
 
 
-        if($name ==""||$password ==""||$repeat_password ==""||$email =="")
-        {
+
+        if ($name == "" || $password == "" || $repeat_password == "" || $email == "") {
             $alert = '<script language="javascript">alert("Điền đầy đủ thông tin có chứa (*) !!!"); </script>';
             echo $alert;
-        }
-        else
-        {
+        } else {
             $check_email = "SELECT * FROM user where email = '$email' ";
             $result = $this->db->select($check_email);
-            if($result)
-            {
+            if ($result) {
                 $alert = '<script language="javascript">alert("Email đã tồn tại !!!"); </script>';
                 echo $alert;
-            }
-            else{
+            } else {
                 $query = "INSERT INTO user (username,password,email) VALUES('$name','$password','$email')";
                 $result = $this->db->insert($query);
                 if ($result) {
@@ -49,49 +44,50 @@ class Customer
                 }
             }
         }
-       
     }
     public function login_customer($data)
     {
         $password = mysqli_real_escape_string($this->db->link, md5($data['Password']));
         $email = mysqli_real_escape_string($this->db->link, $data['email']);
-    
-    if($password ==""||$email =="")
-        {
+
+        if ($password == "" || $email == "") {
             $alert = '<script language="javascript">alert("Điền đầy đủ thông tin có chứa (*) !!!"); </script>';
             echo $alert;
-        }
-        else
-        {
+        } else {
             $check_email = "SELECT * FROM user where email = '$email' AND password = '$password' LIMIT 1 ";
             $result = $this->db->select($check_email);
-            if($result != false)
-            {
+
+            if ($result != false) {
                 $validate = $result->fetch_assoc();
-                Session::set('customer_login',true);
-                Session::set('customer_id',$validate['id_user']);
-                Session::set('customer_name',$validate['username']);
-                $check = "SELECT id_bill FROM bill where id_user = {$_SESSION['customer_id']}   ";
-                $result = $this->db->number($check);
-                if($result > 0)
-                {
-                    Session::set('check',true); // check xem có tồn tại thông tin của hoá đơn trc không,nếu có thì sử dụng để hiện lên trên pay.php
-                    $check = "SELECT * FROM bill where id_user = {$_SESSION['customer_id']} ORDER BY id_bill DESC limit 1 ";
-                    $result = $this->db->select($check);
-                    if($result)
+                if ($validate['active'] == 1) {
+                    Session::set('customer_login',true);
+                    Session::set('customer_id',$validate['id_user']);
+                    Session::set('customer_name',$validate['username']);
+                    $check = "SELECT id_bill FROM bill where id_user = {$_SESSION['customer_id']}   ";
+                    $result = $this->db->number($check);
+                    if($result > 0)
                     {
-                        $validate = $result->fetch_assoc();
-                        Session::set('customer_recriver',$validate['name_customer']);
-                        Session::set('customer_phone', $validate['phone']);
-                        Session::set('customer_address',$validate['address']);
+                        Session::set('check',true); // check xem có tồn tại thông tin của hoá đơn trc không,nếu có thì sử dụng để hiện lên trên pay.php
+                        $check = "SELECT * FROM bill where id_user = {$_SESSION['customer_id']} ORDER BY id_bill DESC limit 1 ";
+                        $result = $this->db->select($check);
+                        if($result)
+                        {
+                            $validate = $result->fetch_assoc();
+                            Session::set('customer_recriver',$validate['name_customer']);
+                            Session::set('customer_phone', $validate['phone']);
+                            Session::set('customer_address',$validate['address']);
+                        }
+                        
+                    }
+                    else{
+                        Session::set('check',false); // check xem có tồn tại thông tin của hoá đơn trc không,nếu có thì sử dụng để hiện lên trên pay.php
                     }
                     
+                    header('Location:index.php');
+                } else {
+                    $alert = '<script language="javascript">alert("Tài khoản của quý khách đang bị khóa do vi phạm 1 số nguyên tắc của cửa hàng");window.location="login.php"; </script>';
+                    echo $alert;
                 }
-                else{
-                    Session::set('check',false); // check xem có tồn tại thông tin của hoá đơn trc không,nếu có thì sử dụng để hiện lên trên pay.php
-                }
-                
-                header('Location:index.php');
             }
             else{
                 $alert = '<script language="javascript">alert("Email hoặc mật khẩu sai");window.location="login.php"; </script>';
