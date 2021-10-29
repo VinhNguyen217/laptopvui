@@ -2,12 +2,12 @@
 include '../libraries/session.php';
 Session::checkLogin();
 $filepath = realpath(dirname(__FILE__));
-require_once ($filepath.'/../libraries/Database.php');
-require_once ($filepath.'/../helpers/format.php');
+require_once($filepath . '/../libraries/Database.php');
+require_once($filepath . '/../helpers/format.php');
 ?>
 
 <?php
-class AdminLogin
+class Admin
 {
     private $db;
     private $fm;
@@ -17,15 +17,15 @@ class AdminLogin
         $this->fm = new Format();
     }
 
-    public function login_admin($adminUser, $adminPass)
+    public function login_admin($adminEmail, $adminPass)
     {
-        $adminUser = $this->fm->validation($adminUser);
+        $adminEmail = $this->fm->validation($adminEmail);
         $adminPass = $this->fm->validation($adminPass);
 
-        $adminUser = mysqli_real_escape_string($this->db->link, $adminUser);
+        $adminEmail = mysqli_real_escape_string($this->db->link, $adminEmail);
         $adminPass = mysqli_real_escape_string($this->db->link, $adminPass);
 
-        $query = "SELECT * FROM admin WHERE username = '$adminUser' AND password = '$adminPass' LIMIT 1";
+        $query = "SELECT * FROM admin WHERE email = '$adminEmail' AND password = '$adminPass' LIMIT 1";
         $result = $this->db->select($query);
 
         if ($result != false) {
@@ -36,7 +36,7 @@ class AdminLogin
             Session::set('adminName', $value['name']);
             header('Location:index.php');
         } else {
-            $alert = "Tên đăng nhập hoặc mật khẩu không trùng khớp :D";
+            $alert = "Email hoặc mật khẩu không trùng khớp :D";
             return $alert;
         }
     }

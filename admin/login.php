@@ -1,12 +1,12 @@
 <?php
-include '../classes/loginAdmin.php';
+include '../classes/admin.php';
 ?>
 <?php
-$class = new AdminLogin();
+$class = new Admin();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $adminUser = $_POST['adminUser'];
+    $adminEmail = $_POST['adminEmail'];
     $adminPass = md5($_POST['adminPass']);
-    $login_check = $class->login_admin($adminUser, $adminPass);
+    $login_check = $class->login_admin($adminEmail, $adminPass);
 }
 ?>
 
@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="card-body">
                                     <form action="login.php" method="POST">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="text" placeholder="name@example.com" name="adminUser" required />
-                                            <label for="inputEmail">Username</label>
+                                            <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" name="adminEmail" required />
+                                            <label for="inputEmail">Email</label>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="inputPassword" type="password" placeholder="Password" name="adminPass" required />

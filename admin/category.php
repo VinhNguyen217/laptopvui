@@ -7,12 +7,18 @@ if (isset($_GET['deleteId'])) {
     $deleteCat = $cat->delete_category($id);
 }
 ?>
+<style>
+    #datatablesSimple th,
+    td {
+        text-align: center;
+    }
+</style>
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Category</h1>
+        <h1 class="mt-4">Danh mục</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Categories</li>
+            <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
+            <li class="breadcrumb-item active">Danh sách danh mục</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
@@ -29,15 +35,15 @@ if (isset($_GET['deleteId'])) {
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Category Name</th>
-                            <th>Action</th>
+                            <th>Tên danh mục</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>Category Name</th>
-                            <th>Action</th>
+                            <th>Tên danh mục</th>
+                            <th>Hành động</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -51,7 +57,10 @@ if (isset($_GET['deleteId'])) {
                                     <td>
                                         <?php echo $result['nameProducer'] ?>
                                     </td>
-                                    <td><a href="category_edit.php?catId=<?php echo $result['id_producer'] ?>">Edit</a> || <a onclick="return confirm('Are you want to delete?')" href="?deleteId=<?php echo $result['id_producer'] ?>">Delete</a></td>
+                                    <td>
+                                        <a href="category_edit.php?catId=<?php echo $result['id_producer'] ?>"><i style="font-size: 25px;" class="far fa-edit"></i></a> ||
+                                        <a onclick="return confirm('Are you want to delete?')" href="?deleteId=<?php echo $result['id_producer'] ?>"><i style="font-size: 25px;" class="far fa-trash-alt"></i></a>
+                                    </td>
                                 </tr>
                         <?php
                             }

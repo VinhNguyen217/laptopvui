@@ -14,7 +14,10 @@ Session::checkSession();
     <title>Trang Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../public/admin/css/styles.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -53,51 +56,51 @@ Session::checkSession();
                     <div class="nav">
                         <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                            Bảng điều khiển
                         </a>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProduct" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-laptop"></i></div>
-                            Product
+                            Sản phẩm
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseProduct" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="product_add.php">Add Product</a>
-                                <a class="nav-link" href="product.php">Products</a>
+                                <a class="nav-link" href="product_add.php">Thêm sản phẩm</a>
+                                <a class="nav-link" href="product.php">Danh sách sản phẩm</a>
                             </nav>
                         </div>
 
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProducer" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fab fa-buffer"></i></div>
-                            Category
+                            Danh mục
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseProducer" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="category_add.php">Add Category</a>
-                                <a class="nav-link" href="category.php">Categories</a>
+                                <a class="nav-link" href="category_add.php">Thêm danh mục</a>
+                                <a class="nav-link" href="category.php">Danh sách danh mục</a>
                             </nav>
                         </div>
 
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProductType" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Product Type
+                            Loại sản phẩm
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseProductType" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="productType_add.php">Add Product Type</a>
-                                <a class="nav-link" href="productType.php">Product Types</a>
+                                <a class="nav-link" href="productType_add.php">Thêm loại sản phẩm</a>
+                                <a class="nav-link" href="productType.php">Danh sách loại sản phẩm</a>
                             </nav>
                         </div>
 
                         <a class="nav-link" href="invoice.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-file-invoice"></i></div>
-                            Invoice
+                            Đơn hàng
                         </a>
                         <a class="nav-link" href="account.php">
                             <div class="sb-nav-link-icon"><i class="far fa-user"></i></div>
-                            Account
+                            Tài khoản
                         </a>
                     </div>
                 </div>

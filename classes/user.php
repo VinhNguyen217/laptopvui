@@ -24,6 +24,16 @@ class User
         $result = $this->db->select($query);
         return $result;
     }
+
+    /**
+     * Cập nhật trạng thái tài khoản
+     */
+    public function update_status($accountId, $status)
+    {
+        $query = "UPDATE user SET active = $status WHERE id_user = $accountId";
+        $result = $this->db->update($query);
+        return $result;
+    }
 }
 
 ?>

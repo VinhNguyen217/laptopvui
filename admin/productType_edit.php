@@ -26,15 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </style>
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Product Type</h1>
+        <h1 class="mt-4">Loại sản phẩm</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Edit Product Type</li>
+            <li class="breadcrumb-item"><a href="productType.php">Danh sách loại sản phẩm</a></li>
+            <li class="breadcrumb-item active">Thông tin loại sản phẩm</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Edit Product Type
+                Chỉnh sửa
             </div>
             <div class="card-body">
                 <?php
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="form-group">
                                 <input type="text" value="<?php echo $result['nameProductType'] ?>" class="form-control" aria-describedby="emailHelp" name="productType_name" placeholder="Enter product types name..." required>
                             </div>
-                            <input type="submit" name="submit" class="btn btn-primary" value="UPDATE" />
+                            <input type="submit" name="submit" class="btn btn-primary" value="Cập nhật" />
                         </form>
                 <?php
                     }

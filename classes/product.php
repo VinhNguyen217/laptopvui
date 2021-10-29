@@ -101,7 +101,7 @@ class Product
         $amount = mysqli_real_escape_string($this->db->link, $data['amount']);
         $top = mysqli_real_escape_string($this->db->link, $data['top']);
         $new = mysqli_real_escape_string($this->db->link, $data['new']);
-        $status = mysqli_real_escape_string($this->db->link, $data['status']);
+
 
         //Kiểm tra hình ảnh và lấy hình ảnh cho vào folder upload
         $permited = array('jpg', 'jpeg', 'png', 'gif');
@@ -133,8 +133,7 @@ class Product
                 detail = '$detail',
                 image = '$unique_image',
                 top = $top,
-                new = $new,
-                status = $status
+                new = $new
                 WHERE id_product = $id";
             } else {
                 // Nếu người dùng ko chọn ảnh
@@ -146,8 +145,7 @@ class Product
                 amount = $amount,
                 detail = '$detail',
                 top = $top,
-                new = $new,
-                status = $status
+                new = $new
                 WHERE id_product = $id";
             }
 
@@ -228,6 +226,13 @@ class Product
                     join product_type on product.id_product_type = product_type.id_product_type 
                     WHERE id_producer= $id";
         $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function updateStatus($id_product, $status)
+    {
+        $query = "Update product Set status = $status Where id_product = $id_product";
+        $result = $this->db->update($query);
         return $result;
     }
 }

@@ -3,47 +3,46 @@ include 'libraries/session.php';
 Session::init();
 ?>
 <?php
-    require_once 'libraries/Database.php';
-    require_once 'helpers/format.php';
-    spl_autoload_register(function($className){
-        require_once "classes/". $className.".php";
-    });
-    $db = new Database();
-    $fm = new Format();
-    $ct = new Cart();
-    $us = new User();
-    $cat = new Category();
-	$cs = new Customer();
-    $product = new Product();
-    $demand = new ProductType();
+require_once 'libraries/Database.php';
+require_once 'helpers/format.php';
+spl_autoload_register(function ($className) {
+	require_once "classes/" . $className . ".php";
+});
+$db = new Database();
+$fm = new Format();
+$ct = new Cart();
+$us = new User();
+$cat = new Category();
+$cs = new Customer();
+$product = new Product();
+$demand = new ProductType();
 ?>
 <?php
-	if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-		Session::destroy1();
-		
-		
-	}
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+	Session::destroy1();
+}
 ?>
 <!DOCTYPE HTML>
+
 <head>
 	<title>Free Home Shoppe Website Template | Home :: w3layouts</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="public/frontend/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="public/frontend/css/slider.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" href="public/frontend/css/Cart.css">
-    <link rel="stylesheet" href="public/frontend/css/info.css">
-    <link rel="stylesheet" href="public/frontend/css/pay.css">
+	<link rel="stylesheet" href="public/frontend/css/Cart.css">
+	<link rel="stylesheet" href="public/frontend/css/info.css">
+	<link rel="stylesheet" href="public/frontend/css/pay.css">
 	<link rel="stylesheet" href="public/frontend/css/header_bottom.css">
 	<script type="text/javascript" src="public/frontend/js/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="public/frontend/js/move-top.js"></script>
 	<script type="text/javascript" src="public/frontend/js/easing.js"></script>
 	<script type="text/javascript" src="public/frontend/js/startstop-slider.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="public/frontend/js/jquery-3.6.0.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="public/frontend/js/jquery-3.6.0.js"></script>
 	<script src="public/frontend/js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<link href="public/frontend/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="public/frontend/css/global.css">
@@ -52,8 +51,8 @@ Session::init();
 </head>
 
 <body>
-	<?php 
-		$check_login = Session:: get('customer_login');
+	<?php
+	$check_login = Session::get('customer_login');
 	?>
 
 	<div class="wrap">
@@ -64,21 +63,23 @@ Session::init();
 				</div>
 				<div class="account_desc">
 					<ul>
-                        <li><a href="" class = "Info-click">Đăng </a></li>
+						<li><a href="" class="Info-click"><?php echo $check_login == true ? Session::get('customer_name') : '' ?> </a></li>
 						<li>
 							<?php
-								if($check_login == false)
-									echo '<a href="resgiter.php" >Đăng Ký</a>';					
-							?>					
+							if ($check_login == false) {
+							?>
+								<a href="resgiter.php">Đăng Ký</a>
+							<?php
+							}
+							?>
 						</li>
 						<li>
 							<?php
-								if($check_login == false)
-									echo '<a href="login.php">Đăng Nhập</a>';
-								else
-									{
-										echo '<a href="?action=logout">Đăng Xuất</a>';
-									}								
+							if ($check_login == false)
+								echo '<a href="login.php">Đăng Nhập</a>';
+							else {
+								echo '<a href="?action=logout">Đăng Xuất</a>';
+							}
 							?>
 						</li>
 					</ul>
@@ -102,27 +103,26 @@ Session::init();
 						this.initEvents();
 					}
 					DropDown.prototype = {
-						initEvents: function () {
+						initEvents: function() {
 							var obj = this;
 
-							obj.dd.on('click', function (event) {
+							obj.dd.on('click', function(event) {
 								$(this).toggleClass('active');
 								event.stopPropagation();
 							});
 						}
 					}
 
-					$(function () {
+					$(function() {
 
 						var dd = new DropDown($('#dd'));
 
-						$(document).click(function () {
+						$(document).click(function() {
 							// all dropdowns
 							$('.wrapper-dropdown-2').removeClass('active');
 						});
 
 					});
-
 				</script>
 				<div class="clear"></div>
 			</div>
@@ -147,4 +147,3 @@ Session::init();
 				<div class="clear"></div>
 			</div>
 		</div>
-      
