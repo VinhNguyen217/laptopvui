@@ -196,7 +196,7 @@ class Product
                         join producer on product.id_producer = producer.id_producer 
                         join product_type on product.id_product_type = product_type.id_product_type 
                          WHERE id_product = $id ";
-        $result = $this->db->delete($query);
+        $result = $this->db->select($query);
         return $result;
     }
     public function  get_category($adr)
@@ -227,6 +227,12 @@ class Product
         $query = "SELECT  DISTINCT product.id_product_type,product.id_producer,product_type.nameProductType FROM product 
                     join product_type on product.id_product_type = product_type.id_product_type 
                     WHERE id_producer= $id";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function  search($search)
+    {
+        $query = "select * from product where nameProduct like '%$search%'";
         $result = $this->db->select($query);
         return $result;
     }

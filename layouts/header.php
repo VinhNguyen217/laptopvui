@@ -12,7 +12,8 @@ Session::init();
     $fm = new Format();
     $ct = new Cart();
     $us = new User();
-    $cat = new Category();
+    $bill = new Bill();
+	$cat = new Category();
 	$cs = new Customer();
     $product = new Product();
     $demand = new ProductType();
@@ -20,8 +21,17 @@ Session::init();
 <?php
 	if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 		Session::destroy1();
+		$del_all_data_cart =$ct->dell_all_data_cart(); 
 		
-		
+	}
+	if (isset($_REQUEST['ok'])) {
+		$search = addslashes($_GET['search']);
+		Session::set('search',$search);
+		if (empty($search)) {
+			
+		} else {
+			header('Location:search.php');
+		}
 	}
 ?>
 <!DOCTYPE HTML>
@@ -47,12 +57,12 @@ Session::init();
 	<script src="public/frontend/js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<link href="public/frontend/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="public/frontend/css/global.css">
-	<script src="public/frontend/js/slides.min.jquery.js"></script>
-	<script src="public/frontend/js/include.js"></script>
+	
 </head>
 
 <body>
 	<?php 
+		$user = Session::get('customer_name');
 		$check_login = Session:: get('customer_login');
 	?>
 
@@ -64,7 +74,14 @@ Session::init();
 				</div>
 				<div class="account_desc">
 					<ul>
-                        <li><a href="" class = "Info-click">Đăng </a></li>
+                        <li>
+						<?php
+								if($check_login == false)
+								?>
+								<a href="info.php" class = "Info-click"><?=$user?> </a>		
+								<?php		
+							?>	
+						</li>
 						<li>
 							<?php
 								if($check_login == false)
@@ -90,11 +107,29 @@ Session::init();
 					<a href="index.php"><img src="public/frontend/images/logo.png" alt="" /></a>
 				</div>
 				<div class="cart">
-					<a href="cart.php">
-						<img src="public/frontend/images/bag.png" />
-						<span class="title">Giỏ Hàng</span>
-						<span class="product-count">0</span>
-					</a>
+					<?php
+						if($check_login == false)
+						{
+							?>
+							<a href="login.php">
+								<img src="public/frontend/images/bag.png" />
+								<span class="title">Giỏ Hàng</span>
+								<span class="product-count">0</span>
+							</a>
+							<?php
+						}
+						else{
+							$num_product_cart = $ct->num_product_cart($_SESSION['customer_id']);
+							?>
+							<a href="cart.php">
+								<img src="public/frontend/images/bag.png" />
+								<span class="title">Giỏ Hàng</span>
+								<span class="product-count"><?=$num_product_cart?></span>
+							</a>
+							<?php
+						}
+					?>
+					
 				</div>
 				<script type="text/javascript">
 					function DropDown(el) {
@@ -139,9 +174,9 @@ Session::init();
 					</ul>
 				</div>
 				<div class="search_box">
-					<form>
-						<input type="text" placeholder="Nhập tên sản phẩm">
-						<input type="submit" value="">
+					<form action="" method="get">
+						<input type="text" placeholder="Nhập tên sản phẩm" name="search" required/>
+						<input type="submit" name="ok" value =""  />
 					</form>
 				</div>
 				<div class="clear"></div>

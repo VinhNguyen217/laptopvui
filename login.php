@@ -13,6 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 	$login_customer = $cs->login_customer($_POST);
 }
 ?>
+<?php
+	$check_login = Session:: get('customer_login');
+	if($check_login != false)
+		header('Location:index.php');					
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 

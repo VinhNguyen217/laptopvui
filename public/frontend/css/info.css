@@ -1,188 +1,70 @@
 *{
-  margin: 0px;
-  padding: 0px;
-}
-.Infor img {
-    width: 100%;
-}
-
-.Infor .info-left {
-    width: 50%;
-    float: left;
-    margin-top: 35px;
-}
-
-.Infor .infor-right {
-    width: 46%;
-    margin-top: 26px;
-    float: right;
-    margin-right: 0px;
-}
-
-.Infor .information-info input {
-  background-color: #ffffff;
-  border: none;
-  height: 25px;
-}
-.Infor .input {
-  padding: 5px;
-  display: grid;
-  width: 100%;
-}
-
-.Infor .information-info {
-  padding: 20px 0;
-}
-
-.Infor h1 {
-  height: 36px;
-}
-
-.Infor input[type="submit"] {
-    text-align: center;
-    height: 34px;
-    width: 45%;
-    float: left;
-    margin: 11px 8px;
-    background-color: #efd8e2;
-    border-radius: 6px;
-}
-
-.Infor i.fa.fa-times-circle-o {
-    font-size: 34px;
-    color: #9a5c84;
-    position: absolute;
-    right: 0px;
-    top: -1px;
-}
-
-.Infor .modal-body {
-    width: 90%;
-    height: 80%;
-    overflow: auto;
-    border: 1px solid #9f4b9e;
-    line-height: 40px;
-    padding: 0px 43px;
-}
-
-.Infor .form-cart {
-    width: 700px;
-    height: 450px;
-    background-color: #ffffff;
-    margin: auto;
-    margin-top: 5%;
-    padding: 1% 2%;
-    z-index: 5;
-    top: 12%;
-    left: 26%;
-    position: fixed;
-    border-radius: 9px;
-    line-height: 25px;
-    box-shadow: 10px 20px #f1dde8;
-}
-.Infor .back-login{
-	background-color: #9bccf4a6;
-	height: 100%;
-	width: 100%;
-	top:0;
-	left: 0;
-	position: fixed;
-	z-index: 3;
-}
-/* cart */
-.Infor .cart-header {
-    font-weight: bold;
-    font-size: 1.25em;
-    color: #333;
+    margin: 0px;
+    padding: 0px;
   }
   
-  .Infor   .cart-column {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid black;
-    margin-right: 1.5em;
-    padding-bottom: 10px;
-    margin-top: 10px;
+  .form-info input[type="submit"] {
+      width: 101px;
+      margin-top: 15px;
+      height: 30px;
+      display: inline-block;
   }
   
-  .Infor  .cart-row {
-    display: flex;
+  
+  
+  .form-info input#address {
+      height: 80px;
   }
   
-  .Infor   .cart-item {
-    width: 60%;
+  
+  .form-info form {
+      line-height: 37px;
   }
   
-  .Infor  .cart-price {
-    width: 20%;
-    font-size: 1.2em;
-    color: #333;
+  .form-info input {
+      display: inherit;
+      height: 23px;
+      width: 100%;
+      margin-bottom: 17px;
   }
   
-  .Infor  .cart-quantity {
-    width: 20%;
+  
+  
+  .form-info img {
+      width: 71%;
+      float: right;
   }
   
-  .Infor  .cart-item-title {
-    color: #333;
-    margin-left: .5em;
-    font-size: 1.2em;
+  .form-info .infor-right {
+      width: 49%;
+      float: right;
   }
   
-  .Infor  .cart-item-image {
-    width: 75px;
-    height: auto;
-    border-radius: 10px;
+  .form-info .info-left {
+      float: left;
+      width: 50%;
+      line-height: 60px;
+      float: left;
   }
   
-  .Infor  .btn-danger {
-    color: white;
-    background-color: #968fdb;
-    border: none;
-    padding: 5px 5px;
-    border-radius: .3em;
-    font-weight: bold;
+  .form-info {
+      width: 94%;
+      padding: 16px 25px;
+      justify-content: space-between;
   }
   
-  .Infor  .btn-danger:hover {
-    background-color: #CC4C4C;
+   .content-info {
+      height: 690px;
+      width: 100%;
   }
   
-  .Infor  .cart-quantity-input {
-    height: 34px;
-    width: 50px;
-    border-radius: 5px;
-    border: 1px solid #56CCF2;
-    background-color: #eee;
-    color: #333;
-    padding: 0;
-    text-align: center;
-    font-size: 1.2em;
-    margin-right: 25px;
+  .main_title {
+      height: 54px;
+      border: 1px solid;
+      margin-top: 10px;
   }
   
-  .Infor  .cart-row:last-child {
-    border-bottom: 1px solid black;
-  }
-  
-  .Infor   .cart-row:last-child .cart-column {
-    border: none;
-  }
-  
-  .Infor  .cart-total {
-    text-align: end;
-    margin-top: 10px;
-    margin-right: 10px;
-  }
-  
-  .Infor .cart-total-title {
-    font-weight: bold;
-    font-size: 1.5em;
-    color: black;
-    margin-right: 20px;
-  }
-  
-  .Infor  .cart-total-price {
-    color: #333;
-    font-size: 1.1em;
+  .content-info {
+      background-color: aliceblue;
+      margin: 8px 0px;
   }

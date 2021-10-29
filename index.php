@@ -103,9 +103,7 @@ include "layouts/header.php"
 							<div class="price-number">
 								<p><span class="rupees"><?= $result_new['price'] ?></span></p>
 							</div>
-							<div class="add-cart">
-								<a href="preview.php?proid=<?= $result_new['id_product'] ?>"><img src="public/frontend/images/cart.png" /></a>
-							</div>
+							
 							<div class="clear"></div>
 						</div>
 
@@ -141,9 +139,7 @@ include "layouts/header.php"
 							<div class="price-number">
 								<p><span class="rupees"><?= $result_hot['price'] ?></span></p>
 							</div>
-							<div class="add-cart">
-								<a href="preview.php?proid=<?= $result_hot['id_product'] ?>"><img src="public/frontend/images/cart.png" /></a>
-							</div>
+							
 							<div class="clear"></div>
 						</div>
 

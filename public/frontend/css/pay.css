@@ -3,6 +3,21 @@
     margin: 0px;
 }
 
+.information-pay input[type="submit"] {
+    font-size: 25px;
+    border-radius: 5px;
+    height: 36px;
+    margin-left: 25px;
+    width: 70px;
+    align-items: center;
+}
+
+p {
+    padding: 16px 20px;
+    font-size: 25px;
+    font-family: revert;
+}
+
 .cart-items {
     overflow: auto;
     height: 92%;
@@ -25,10 +40,12 @@
 .modal-body .cart-row .cart-quantity.cart-column {
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 18%;
+    text-align: center;
     justify-content: space-between;
     margin-bottom: -1px;
     padding-bottom: 10px;
+    padding-left: 20px;
     border-bottom: 1px solid;
 }
 
@@ -38,7 +55,7 @@
     margin-bottom: -1px;
     padding-bottom: 10px;
     border-bottom: 1px solid;
-    width: 54%;
+    width: 40%;
 }
 
 
@@ -53,7 +70,7 @@
 
 
 .modal-body span.cart-item.cart-header.cart-column {
-    width: 54%;
+    width: 40%;
 }
 
 .modal-body {
@@ -63,7 +80,7 @@
 }
 
 input.pay-pay {
-    margin-left: 5px;
+    margin-left: 27px;
     height: 45px;
     width: 293px;
     background-color: #e5a8c8;

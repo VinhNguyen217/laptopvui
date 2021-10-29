@@ -9,7 +9,11 @@ include "layouts/header.php"
 	}
 	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 		$quantity = $_POST['quantity'];
-		$addtocart = $ct->add_to_cart($quantity,$id);
+		$iduser = Session::get('customer_id');
+		$addtocart = $ct->add_to_cart($quantity,$id,$iduser);
+	}
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Submit'])) {
+		header('Location:login.php');
 	}
 ?>
 <div class="main">
@@ -50,6 +54,16 @@ include "layouts/header.php"
 						<div class="price">
 							<p>Price: <span><?=$result_preview['price']?> VND</span></p>
 						</div>
+						<div class="amount">
+							<?php
+								if($result_preview['amount'] >0){
+									?>
+										<p>Số lượng: <span><?=$result_preview['amount']?></span></p>
+									<?php
+								}else echo "<p> Sản phẩm hết hàng</p>"
+							?>
+							
+						</div>
 						<div class="share-desc">
 							<div class="share">
 								<p>Share Product :</p>
@@ -60,8 +74,30 @@ include "layouts/header.php"
 							</div>
 							<div class="add_cart">
 								<form action="" method = "post">
-									<input type="number"  name = "quantity" value = "1" min = "1">
-									<input type="submit" name = "submit"  class="button" value = "Add to cart">
+									<input type="number"  name = "quantity" value = "1" min = "1" max=<?=$result_preview['amount']?>>
+									
+									<?php
+										if($check_login == false)
+										{
+											?>
+											
+												<input type="submit" name = "Submit"  class="button" value = "Add to cart" >
+											
+											<?php
+										}
+										else{
+											if($result_preview['amount'] > 0){
+											?>
+												<input type="submit" name = "submit"  class="button" value = "Add to cart" >
+											<?php
+											
+											}else {
+												?>
+												<input type="submit" name = "submit"  class="button" value = "Add to cart" disabled >
+												<?php
+											}
+										}
+									?>
 
 								</form>
 							</div>

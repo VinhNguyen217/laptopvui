@@ -5,17 +5,11 @@
     if (isset( $_GET['cartid'] )) 
     {
         $id = $_GET['cartid'];
-        $delete_product_cart= $ct->delete_product_cart($id);
+        $iduser = Session::get('customer_id');
+        $delete_product_cart = $ct->delete_product_cart($id,$iduser);
+        
     }
-	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitupdate'])) {
-        $quantity = $_POST['quantity'];
-        $cartid = $_POST['cartid'];
-        $update_quantity_cart = $ct->update_quantity_cart($quantity,$cartid);
-        if($quantity <=  0)
-        {
-            $delete_product_cart= $ct->delete_product_cart($cartid);
-        }
-    }
+	
    
 ?>
 <div class="main_title " >
@@ -27,6 +21,7 @@
         </ul>
     </div>
 <div class="content-cart">
+    <form action=""method = "post">
     <?php $sum = 0 ?>
     <table style="width:100%">
         <tr>
@@ -39,51 +34,67 @@
             <th>Ghi chú</th>
         </tr>
         <?php
-                $sId = session_id();
-                $get_product_cart = $ct->get_product_cart($sId);
+                $iduser = Session::get('customer_id');
+                $get_product_cart = $ct->get_product_cart($iduser);
                 if($get_product_cart)
                 {
                     while($result = $get_product_cart->fetch_assoc()){
                    
             ?>
-        <tr style = " justify-content: space-between;">
+            <tr style = " justify-content: space-between;">
             
             <td >
-            <form action="" method = "post">
-                <input  style="visibility: hidden; opacity: 0;position: absolute" type="hidden" name ="cartid" value="<?=$result['id_carts']?>" > 
-                <input type="checkbox"  name="list_check[]" value="<?php echo $result['id_carts'] ?>" checked >
-               
-                </form>
+        
+                <input type="checkbox"  name="list_cart[]" value="<?php echo $result['id_carts'] ?>"  >
+              
             </td>
             <td ><?=$result['nameProduct']?></td>
             <td  ><img class="cart-item-image" src="uploads/<?=$result['image']?>" ></td>
             <td ><?=$result['price']?></td>
             <td >
-                <form action="" method = "post">
-                    <input  style="visibility: hidden; opacity: 0;position: absolute" type="hidden" name ="cartid" value="<?=$result['id_carts']?>" > 
-                    <input  class="cart-quantity-input change " type="number"  name = "quantity" value = "<?=$result['quantity']?>" >
-                    <input class="btn btn-danger  update " type="submit" name = "submitupdate"  class="button" value = "update">
-                </form>
+              
+                    <input  class="cart-quantity-input change-qty" data-product_id="<?php echo  $result['id_carts'] ?>" type="number"  name = "quantity" value = "<?=$result['quantity']?>"  min = 1 max = <?=$result['amount']?>>
+               
             </td>
-            <td  ><?php
+            <td class="price-<?php echo $result['id_carts']?> "><?php
                 $total = $result['price']* $result['quantity'];
+                $sum += $total;
                 echo $total;
             ?></td>
-            <td  ><a href="?cartid=<?=$result['id_carts']?>">Xoá</a></td>
+            <td  ><a onclick="return confirm('Are you want to delete?')" href="?cartid=<?=$result['id_carts']?>">Xoá</a></td>
         </tr>
                     
         <?php      
             
                 }
             }
+           
         ?>
     </table>
-    <div class="cart-total">
-        <strong class="cart-total-title">Tổng Cộng:</strong>
-        <span class="cart-total-price"> <?=$sum?></span>
-        <a href=""><input type="submit" id = "h1"name = "Resgiter" value="Resgiter"></a>
-    </div>
+    
+        <div class="cart-total">
+            <?php  Session::set('total',$sum);  ?>
+            <strong class="cart-total-title">Tổng Cộng:</strong>
+            <span class="cart-total-price"> <?=$_SESSION['total']?></span>
+            
+            <input type="submit" id = "h1"name = "resgiter" value="resgiter">
+        </div>
+    </form>
+    <?php
+        if (isset($_POST['resgiter'])) {
+            if (isset($_POST['list_cart'])) {
+                $list_cart = $_POST['list_cart'];
+                Session::set('list_cart',$list_cart);
+                $redirect = "<script>location.href = 'pay.php';</script>";
+                echo $redirect;
+            }
+            else{
+                echo '<script language="javascript">alert("Bạn chưa chọn sản phẩm !!!");</script>';
+            }
+        }
+    ?>
 </div> 
+
 <?php
 	include "layouts/footer.php"
 ?>
