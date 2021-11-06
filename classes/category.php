@@ -109,17 +109,25 @@ class Category
      */
     public function delete_category($id)
     {
-        $query = "DELETE FROM producer WHERE id_producer = '$id'";
-        $result = $this->db_category->delete($query);
-        if ($result) {
-            $alert = '<script language="javascript">alert("Category Deleted Successfully !!!"); window.location="category.php";</script>';
+        $query1 = "SELECT COUNT(*) AS count  FROM product WHERE product.id_producer = $id ";
+        $rs = $this->db_category->select($query1);
+        $val = $rs->fetch_assoc();
+        $count = $val['count'];
+        if ($count > 0) {
+            $alert = '<script language="javascript">alert("Không thể xóa vì liên quan đến những trường dữ liệu khác"); window.location="category.php";</script>';
             return $alert;
         } else {
-            $alert = '<script language="javascript">alert("Category Deleted Not Successfully !!!"); window.location="category.php";</script>';
-            return $alert;
+            $query = "DELETE FROM producer WHERE id_producer = '$id'";
+            $result = $this->db_category->delete($query);
+            if ($result) {
+                $alert = '<script language="javascript">alert("Category Deleted Successfully !!!"); window.location="category.php";</script>';
+                return $alert;
+            } else {
+                $alert = '<script language="javascript">alert("Category Deleted Not Successfully !!!"); window.location="category.php";</script>';
+                return $alert;
+            }
         }
     }
-   
 }
 
 ?>

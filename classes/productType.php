@@ -74,11 +74,12 @@ class ProductType
      */
     public function getProductTypeById($id)
     {
+        $catId = $_GET['catid'];
         $query = "SELECT * FROM product join product_type 
                                         on product.id_product_type = product_type.id_product_type
                                         join producer
                                         on product.id_producer = producer.id_producer
-                                        WHERE product.id_product_type = '$id'";
+                                        WHERE product.id_product_type = $id and product.id_producer = $catId";
         $result = $this->db_productType->select($query);
         return $result;
     }
@@ -113,14 +114,23 @@ class ProductType
      */
     public function delete_productType($id)
     {
-        $query = "DELETE FROM product_type WHERE id_product_type = '$id'";
-        $result = $this->db_productType->delete($query);
-        if ($result) {
-            $alert = '<script language="javascript">alert("Product Type Deleted Successfully !!!"); window.location="productType.php";</script>';
+        $query1 = "SELECT COUNT(*) AS count  FROM product WHERE product.id_product_type = $id ";
+        $rs = $this->db_productType->select($query1);
+        $val = $rs->fetch_assoc();
+        $count = $val['count'];
+        if ($count > 0) {
+            $alert = '<script language="javascript">alert("Không thể xóa vì liên quan đến những trường dữ liệu khác"); window.location="productType.php";</script>';
             return $alert;
         } else {
-            $alert = '<script language="javascript">alert("Product Type Deleted Not Successfully !!!"); window.location="productType.php";</script>';
-            return $alert;
+            $query = "DELETE FROM product_type WHERE id_product_type = '$id'";
+            $result = $this->db_productType->delete($query);
+            if ($result) {
+                $alert = '<script language="javascript">alert("Product Type Deleted Successfully !!!"); window.location="productType.php";</script>';
+                return $alert;
+            } else {
+                $alert = '<script language="javascript">alert("Product Type Deleted Not Successfully !!!"); window.location="productType.php";</script>';
+                return $alert;
+            }
         }
     }
 

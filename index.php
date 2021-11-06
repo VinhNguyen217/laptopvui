@@ -1,7 +1,8 @@
 <?php
-include "layouts/header.php"
+include "layouts/header.php";
+require_once "helpers/format.php";
+$fm = new Format();
 ?>
-
 <div class="main">
 	<div class="header_slide">
 		<div class="header_bottom_left">
@@ -100,9 +101,9 @@ include "layouts/header.php"
 						<h2><?= $result_new['nameProduct'] ?></h2>
 						<div class="price-details">
 							<div class="price-number">
-								<p><span class="rupees"><?= $result_new['price'] ?></span></p>
+								<p><span class="rupees"><?= $fm->format_currency($result_new['price']) . " đ" ?></span></p>
 							</div>
-							
+
 							<div class="clear"></div>
 						</div>
 
@@ -136,9 +137,9 @@ include "layouts/header.php"
 						<h2><?= $result_hot['nameProduct'] ?></h2>
 						<div class="price-details">
 							<div class="price-number">
-								<p><span class="rupees"><?= $result_hot['price'] ?></span></p>
+								<p><span class="rupees"><?= $fm->format_currency($result_hot['price']) . " đ"  ?></span></p>
 							</div>
-							
+
 							<div class="clear"></div>
 						</div>
 

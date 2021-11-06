@@ -13,6 +13,7 @@ $fm = new Format();
 if (isset($_GET['productId'])) {
     $id = $_GET['productId'];
     $deleteProduct = $pd->delete_product($id);
+    echo $deleteProduct;
 }
 ?>
 <main>

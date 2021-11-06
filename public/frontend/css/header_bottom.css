@@ -1,11 +1,11 @@
 
         .main_title {
             font-size: 12px;
+            margin-top: 20px;
         }
 
         .main_title ul {
             list-style: none;
-            margin: 10px;
             display: block;
         }
 
@@ -14,11 +14,12 @@
         }
 
         .main_title ul li a {
-            line-height: 35px;
-            font-size: 15px;
+            line-height: 40px;
+            font-size: 18px;
             font-weight: 600;
             color: #555;
             padding: 0px 10px;
+            font-family: 'sans-serif';
         }
 
         .main_title ul li a:hover {

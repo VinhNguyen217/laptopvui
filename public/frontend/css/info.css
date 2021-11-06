@@ -36,6 +36,7 @@
   }
   
   .form-info .infor-right {
+      margin-top: 20px;
       width: 49%;
       float: right;
   }
@@ -59,9 +60,11 @@
   }
   
   .main_title {
-      height: 54px;
-      border: 1px solid;
-      margin-top: 10px;
+      width: 1215.350px;
+      height: 40px;
+      border-radius: 5px;
+      border: 0.5px #eceaea solid;
+      background-color: #F5F5F5;
   }
   
   .content-info {

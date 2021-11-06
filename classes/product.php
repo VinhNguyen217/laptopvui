@@ -165,14 +165,23 @@ class Product
      */
     public function delete_product($id)
     {
-        $query = "DELETE FROM product WHERE id_product = $id";
-        $result = $this->db->delete($query);
-        if ($result) {
-            $alert = '<script language="javascript">alert("Product Deleted Successfully !!!"); window.location="product.php";</script>';
+        $query1 = "SELECT COUNT(*) AS count  FROM bill_detail WHERE bill_detail.id_product = $id ";
+        $rs = $this->db->select($query1);
+        $val = $rs->fetch_assoc();
+        $count = $val['count'];
+        if ($count > 0) {
+            $alert = '<script language="javascript">alert("Không thể xóa vì liên quan đến những trường dữ liệu khác"); window.location="product.php";</script>';
             return $alert;
         } else {
-            $alert = '<script language="javascript">alert("Product Deleted Not Successfully !!!"); window.location="product.php";</script>';
-            return $alert;
+            $query = "DELETE FROM product WHERE id_product = $id";
+            $result = $this->db->delete($query);
+            if ($result) {
+                $alert = '<script language="javascript">alert("Product Deleted Successfully !!!"); window.location="product.php";</script>';
+                return $alert;
+            } else {
+                $alert = '<script language="javascript">alert("Product Deleted Not Successfully !!!"); window.location="product.php";</script>';
+                return $alert;
+            }
         }
     }
 
@@ -238,6 +247,26 @@ class Product
     {
         $query = "Update product Set status = $status Where id_product = $id_product";
         $result = $this->db->update($query);
+        return $result;
+    }
+
+    /**
+     * Cập nhật số lượng 
+     */
+    public function updateAmount($id_product, $amount)
+    {
+        $query = "Update product Set amount = (amount - $amount) Where id_product = $id_product";
+        $result = $this->db->update($query);
+        return $result;
+    }
+
+    /**
+     * Truy vấn sản phẩm liên quan
+     */
+    public function getProductRelated($idProduct, $idProducer, $idProductType)
+    {
+        $query = "SELECT * from product WHERE id_product != (SELECT id_product from product WHERE id_product = $idProduct) and id_producer = $idProducer and id_product_type = $idProductType LIMIT 4;";
+        $result = $this->db->select($query);
         return $result;
     }
 }

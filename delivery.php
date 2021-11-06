@@ -1,32 +1,9 @@
 <?php
-	include "layouts/header.php"
+include "layouts/header.php"
 ?>
 
 <div class="main">
 	<div class="content">
-		<div class="section group">
-			<div class="grid_1_of_3 images_1_of_3">
-				<img src="images/delivery-img1.jpg" alt="" />
-				<h3>Lorem Ipsum is simply dummy text </h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-					labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit
-					esse cillum dolore eu fugiat nulla pariatur.</p>
-			</div>
-			<div class="grid_1_of_3 images_1_of_3">
-				<img src="images/delivery-img2.jpg" alt="" />
-				<h3>Lorem Ipsum is simply dummy text </h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-					labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit
-					esse cillum dolore eu fugiat nulla pariatur.</p>
-			</div>
-			<div class="grid_1_of_3 images_1_of_3">
-				<img src="images/delivery-img3.jpg" alt="" />
-				<h3>Lorem Ipsum is simply dummy text </h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-					labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit
-					esse cillum dolore eu fugiat nulla pariatur.</p>
-			</div>
-		</div>
 		<div class="faqs">
 			<h2>Frequently Asked Questions</h2>
 			<div id="posts">
@@ -148,7 +125,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$("#posts").accordion({
 				header: "div.tab",
 				alwaysOpen: false,
@@ -158,5 +135,5 @@
 	</script>
 </div>
 <?php
-	include "layouts/footer.php"
+include "layouts/footer.php"
 ?>

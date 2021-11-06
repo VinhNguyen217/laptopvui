@@ -9,7 +9,13 @@
 .content-cart table, th, td {
   border:1px solid black;
 }
+.content-cart table tr,td {
+  text-align: center;
+}
 
+.cart-total {
+  margin-top: 20px;
+}
 .content-cart th {
     padding: 5px 30px;
 }
@@ -21,8 +27,31 @@
 .content-cart  img {
   width: 45%;
   position: absolute;
-  margin-top: -17px;
+  margin-top: -20px;
+  margin-left: -22px;
 }
 .content-cart input.cart-quantity-input.change {
   width: 10%;
+}
+.content-cart table tr td a{
+  border: 1px solid #eceaea;
+  padding: 8px;
+  border-radius:5px ;
+}
+.content-cart table tr td a:hover{
+  background-color: aqua;
+}
+.cart-total-title ,.cart-total-price{
+  font-size: 20px;
+  color: red;
+}
+
+.cart-total input[type='submit']{
+  margin-left:20px;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  color: white;
+  background-color: #FE7600;
 }

@@ -13,7 +13,7 @@ class Bill
     {
         $this->db = new Database();
         $this->fm = new Format();
-    } 
+    }
     //admin
     /**
      * Hiển thị danh sách hóa đơn
@@ -40,7 +40,7 @@ class Bill
      */
     public function getDetailBillById($id)
     {
-        $query = "SELECT bill.id_bill,nameProduct,image,bill_detail.amount,product.price FROM (`bill` join bill_detail on bill.id_bill = bill_detail.id_bill ) join product on bill_detail.id_product = product.id_product WHERE bill.id_bill = $id";
+        $query = "SELECT bill.id_bill,bill_detail.id_product,nameProduct,image,bill_detail.amount,product.price FROM (`bill` join bill_detail on bill.id_bill = bill_detail.id_bill ) join product on bill_detail.id_product = product.id_product WHERE bill.id_bill = $id";
         $result = $this->db->select($query);
         return $result;
     }
@@ -81,7 +81,7 @@ class Bill
     }
     //thêm bill vào csdl 
     public function add_bill()
-    {   
+    {
         $query_insert = "INSERT INTO bill (id_user,name_customer,address,phone,total_money) 
                             VALUES({$_SESSION['customer_id']},'{$_SESSION['customer_recriver']}','{$_SESSION['customer_phone']}','{$_SESSION['customer_address']}',{$_SESSION['total_pay']})";
         $insert_result = $this->db->insert($query_insert);
@@ -96,7 +96,7 @@ class Bill
         return $result;
     }
     //thêm sản phảm mua hàng vào bill_detail
-    public function add_product_bill($id_cart,$id_bill)
+    public function add_product_bill($id_cart, $id_bill)
     {
         $query = "SELECT * FROM carts where id_carts = $id_cart ";
         $result = $this->db->select($query);
@@ -106,7 +106,5 @@ class Bill
         $insert_result = $this->db->insert($query_insert);
         return $insert_result;
     }
-   
-   
 }
 ?>

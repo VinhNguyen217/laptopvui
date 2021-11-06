@@ -44,7 +44,6 @@ body {
 	background: #FFF;
 }
 .headertop_desc{
-	padding:20px 0;
 	border-bottom:1px solid #EEE;
 }
 .call{
@@ -53,6 +52,7 @@ body {
 .call p{
 	font-size:0.9em;
 	color:#9C9C9C;
+	margin-left: 10px;
 }
 .call p span{
 	color:#303030;
@@ -76,9 +76,10 @@ body {
 }
 .account_desc li a{
 	font-size:0.823em;
-	color:#9C9C9C;
+	color:#903737;
 	padding:0 10px;
-	font-family: 'ambleregular';
+	font-family: 'sans-serif';
+	font-size: 16px;
 }
 .account_desc li a:hover{
 	color:#E4292F;
@@ -97,6 +98,7 @@ body {
 	 margin-top:20px;
 	 text-align: center;
 	 border: 1px solid #ddd;
+	 background-color: #FE7600;
 }
 .cart img{
 	width: 25px;
@@ -112,9 +114,10 @@ body {
 	font-size: 20px;
 	font-weight: normal;
 	color: black;
+	font-family: sans-serif;
 }
 .cart .product-count{
-    background: none repeat scroll 0 0 red;
+    background: none repeat scroll 0 0 cornflowerblue;
     border-radius: 50%;
     color: black;
     display: inline-block;
@@ -128,7 +131,7 @@ body {
     line-height: 20px;
 }
 .cart:hover{
-	background-color: #5A88CA;
+	/* background-color: #5A88CA; */
 }
 /* .cart p{
 	font-size:0.9em;
@@ -214,7 +217,7 @@ body {
 	float:left;
 }
 .menu li a {
-	font-family: 'ambleregular';
+	font-family: 'sans-serif';
 	font-size:0.823em;
 	text-transform:uppercase;
 	color: #fff;
@@ -285,7 +288,7 @@ body {
 	line-height: 32px;
 	color:#FFF;
 	padding:5px;
-	background:#243a76;
+	background:#B81D22;
 }
 .categories li a{
 	display:block;
@@ -325,8 +328,6 @@ body {
 	text-transform: uppercase;
 }
 .content_top{
-	padding: 15px 20px;
-	border: 1px solid #EBE8E8;
 	border-radius: 3px;
 }
 .content_bottom {
@@ -339,7 +340,7 @@ body {
 	float: left;
 }
 .heading h3 {
-	font-family: 'ambleregular';
+	font-family: 'sans-serif';
 	font-size:22px;
 	color:#383838;
 	text-transform: uppercase;
@@ -399,6 +400,8 @@ body {
 .price-details{
 	margin-top:10px;
 	border-top:1px solid #CD1F25;
+	display: flex;
+    justify-content: center;
 }
 .price-number{
 	float: left;
@@ -716,9 +719,10 @@ body {
 .wish-list li.compare{
 	background:url(../images/compare.png) no-repeat 0;
 }
-.product-desc, .product-tags {
+.product-desc {
 	clear: both;
-	padding-top: 20px;
+	padding: 10px;
+	border: 1px #eceaea solid;
 }
 .product-desc p {
 	font-size: 0.8em;
@@ -891,7 +895,6 @@ body {
 .span_3_of_2 .button {
 	float: right;
 	margin-top:15px;
-	line-height:3em;
 }
 .span_3_of_2 .button a {
 	padding: 12px 20px;
@@ -1118,10 +1121,10 @@ body {
 	padding:10px;
 }
 .panel{
-	background:#222;
+	/* background:#222; */
 }
 .panel p{
-	color:#C0C0C0;
+	/* color:#C0C0C0; */
 	font-size:0.95em;
 	line-height: 1.8em;
 	padding:5px 20px;
