@@ -45,6 +45,8 @@ Session::init();
 	<link rel="stylesheet" href="public/frontend/css/Cart.css">
 	<link rel="stylesheet" href="public/frontend/css/info.css">
 	<link rel="stylesheet" href="public/frontend/css/pay.css">
+	<link rel="stylesheet" href="public/frontend/css/bill_detail.css">
+	<link rel="stylesheet" href="public/frontend/css/bill.css">
 	<link rel="stylesheet" href="public/frontend/css/header_bottom.css">
 	<script type="text/javascript" src="public/frontend/js/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="public/frontend/js/move-top.js"></script>

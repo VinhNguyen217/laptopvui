@@ -106,7 +106,32 @@ class Bill
         $insert_result = $this->db->insert($query_insert);
         return $insert_result;
     }
+    
+    //đưa ra đơn hàng 
+
+    public function get_bill($iduser)
+    {
+        $query = "SELECT * FROM bill where id_user = 6 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_bill1($iduser,$id)
+    {
+        $query = "SELECT * FROM bill where id_user = $iduser and status = 6 ";
+        $result = $this->db->select($query);
+        return $result;
+    }
    
-   
+    //hiển thị chi tiết đơn hàng 
+    public function get_products_bill($idbill)
+    {
+        $query = "SELECT * FROM product join  bill_detail
+                            on product.id_product = bill_detail.id_product
+                            join producer on product.id_producer = producer.id_producer
+                            join product_type on product.id_product_type = product_type.id_product_type
+                            where bill_detail.id_bill = $idbill ";
+        $result = $this->db->select($query);
+        return $result;
+    }
 }
 ?>

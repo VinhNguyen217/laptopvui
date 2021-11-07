@@ -1,59 +1,143 @@
 <?php
 include "layouts/header.php"
 ?>
+<?php
+    $id = -1;
+	if (!isset($_GET['statusid']) || $_GET['statusid'] == NULL) {
+		
+	} else {
+		$id = $_GET['statusid'];
+	}
+?>
 <div class="main">
-	<div class="content">
-		<div class="section group">
-			<div class="col span_2_of_3">
-				<div class="contact-form">
-					<h2>Contact Us</h2>
-					<form>
-						<div>
-							<span><label>Name</label></span>
-							<span><input type="text" class="textbox"></span>
-						</div>
-						<div>
-							<span><label>E-mail</label></span>
-							<span><input type="text" class="textbox"></span>
-						</div>
-						<div>
-							<span><label>Company Name</label></span>
-							<span><input type="text" class="textbox"></span>
-						</div>
-						<div>
-							<span><label>Subject</label></span>
-							<span><textarea> </textarea></span>
-						</div>
-						<div>
-							<span><input type="submit" value="Submit" class="myButton"></span>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col span_1_of_3">
-				<div class="contact_info">
-					<h3>Find Us Here</h3>
-					<div class="map">
-						<iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0"
-							marginwidth="0"
-							src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a
-								href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265"
-								style="color:#666;text-align:left;font-size:12px">View Larger Map</a></small>
-					</div>
-				</div>
-				<div class="company_address">
-					<h3>Company Information :</h3>
-					<p>500 Lorem Ipsum Dolor Sit,</p>
-					<p>22-56-2-9 Sit Amet, Lorem,</p>
-					<p>USA</p>
-					<p>Phone:(00) 222 666 444</p>
-					<p>Fax: (000) 000 00 00 0</p>
-					<p>Email: <span><a href="mailto:@example.com">info@mycompany.com</a></span></p>
-					<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="tk-bill">
+    <div class="box-order-list-tk-new">
+    <div class="title-tk-2021">Đơn hàng của tôi</div>
+    <div class="list-tab-tk">
+        <a href="contact.php"  class="active">Tất cả</a>
+        <a href="contact.php?statusid=0 "  >Chưa xử lý</a>
+        <a href="contact.php?statusid=1"  >Đang xử lý</a>
+        <a href="contact.php?statusid=2" >Hoàn thành</a>
+    </div>
+    <div class="box-search-tk">
+            <button onclick="searchOrderTk()"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <input id="input-search-order-tk" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+    </div>
+    <div class="content-tab-tk">
+        <div class="tab-tk-item active" id="tab-tk-1">
+             
+            <table>
+                <tr>
+                    <td width="20%">Mã đơn hàng</td>
+                    <td width="20%">Ngày mua</td>
+                    <td width="20%">Người Nhận x Địa Chỉ</td>
+                    <td width="20%">Tổng tiền  </td>
+                    <td width="20%">Tình trạng đơn</td>
+                      	
+                   
+                </tr>
+                <?php
+                    $sum =0;
+                    $iduser = Session::get('customer_id');
+                    if($id < 0){
+                        $get_bill = $bill->get_bill($iduser);}
+                        else{$get_bill = $bill->get_bill1($iduser,$id);}
+                        if($get_bill)
+                        {
+                            while($result = $get_bill->fetch_assoc()){
+                    
+                ?>
+                <tr id="js-item-tk-231912">
+                    <td width="120">
+                        <a href="news.php?billid=<?=$result['id_bill']?>" class="tk-id"><?=$result['id_bill']?></a>
+                    </td>
+                    <td width="110">
+                        <span class="tk-date"><?=$result['date_created']?></span>
+                    </td>
+                    <td colspan="1">
+                        <div class="tk-od-info" data-id="60412">
+                            <span>Người Nhận: <?=$result['name_customer']?></span><br>
+                            <span>Địa Chỉ: <?=$result['address']?> </span>
+                        </div>                     	 
+                    </td>
+					<td>
+					<b><?=$result['total_money'] ?>đ</b>
+
+					</td>
+                    <td>
+                        <?php
+                            if($result['status'] == 0) {
+                            ?>
+                            <b>Chưa Xử Lý</b></div>
+                            <?php
+                            }else if($result['status'] == 1){
+                            ?>
+                            <b>Đã Xử Lý</b></div>
+                            <?php
+                            }else {
+                            ?>
+                            <b>Hoàn Thành</b></div>
+                            <?php
+                            }
+                        ?>
+                    </td>
+                </tr>
+                <?php
+                    $sum = $sum + $result['total_money'];
+                
+                        }
+                    }
+                
+                ?>
+                <tr>
+                    <td colspan="5">
+                        <div class="tk-pro-item-price">
+                            Số tiền: <span><?=$sum?>đ</span>
+                        </div>
+                    </td>
+                </tr>
+                
+            </table>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+function buyOrder(elm) {
+    let ad_item = $(elm).attr("data-id");
+    let holder_item = "#js-item-tk-" + ad_item;
+    $(holder_item).find(".tk-od-info").each(function(){
+        let id_pro = $(this).attr("data-id");
+        listenBuyProAccount(id_pro,0,1)
+    })
+
+    location.href="/cart";
+}
+
+function listenBuyProAccount(product_id, variant_id, quantity) {
+    var product_prop = {
+        quantity: 1,
+        buyer_note : ""
+    };
+    Hura.Cart.Product.add(product_id, variant_id, product_prop).then(function(response){
+       if(response.status === 'error') {
+      console.log("Lỗi thêm sản phẩm vào giỏ hàng: error_type = " + response.error_type);
+       }else{
+       }
+    });
+}
+  
+function searchOrderTk() {
+    let text_search = $("#input-search-order-tk").val();
+    let order_status = "";
+    let url = "/taikhoan?view=account-order&q="+ text_search +"&status=" + order_status;
+    location.href = url;
+}
+</script>
+            </div>
+        </div>
+    </div>
 </div>
 <?php
 include "layouts/footer.php"

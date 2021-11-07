@@ -1,0 +1,46 @@
+*{
+    margin : 0px;
+    padding: 0px;
+}
+
+.tk-bill td {
+    padding: 12px;
+    font-size: 18px;
+}
+
+
+.tk-bill {
+    background-color: aliceblue;
+    width: 100%;
+}
+
+.tk-bill .box-order-list-tk-new {
+    padding: 10px;
+}
+
+.tk-bill .title-tk-2021 {
+    font-size: 30px;
+}
+
+.tk-bill .list-tab-tk {
+    font-size: 22px;
+    margin: 10px 0px;
+}
+
+.tk-bill  .box-search-tk {
+    width: 100%;
+    margin: 10px 10px;
+}
+
+.tk-bill  a.active {
+    padding: 0px;
+}
+
+.tk-bill input#input-search-order-tk {
+    height: 30px;
+    width: 50%;
+}
+
+.tk-bill button {
+    font-size: 20px;
+}

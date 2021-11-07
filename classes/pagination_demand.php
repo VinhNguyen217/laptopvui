@@ -12,7 +12,7 @@ if($current_page >1){
 ?>
 <?php for ($num=1;$num <= $totalPage;$num++) { ?>
     <?php if($num != $current_page) { ?>
-        <?php if($num > $current_page -3 && $num <$current_page +3) { ?>
+        <?php if($num > $current_page -4 && $num <$current_page +4) { ?>
             <a href="?catid=<?=$_GET['catid']?>&<?=$ids?>=<?=$id?>&per_page=<?=$item_per_page?>&page=<?=$num?>"><?=$num?></a>
         <?php } ?>
     <?php } else { ?>
