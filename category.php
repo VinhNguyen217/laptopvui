@@ -1,5 +1,9 @@
 <?php
-include "layouts/header.php"
+include "layouts/header.php";
+require_once "helpers/format.php";
+
+$fm = new Format();
+$_SESSION['check1'] = false;
 ?>
 <?php
 if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
@@ -17,9 +21,9 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
             <div class="main_title">
 
                 <ul>
-                    <li><a href="./index.php" style="background: none;padding-left: 0px;">Trang chủ</a></li>
-                    <li><a>/</a></li>
-                    <li><a href="#" style="background: none;padding-left: 0px;"><?= $result_cat['nameProducer'] ?></a></li>
+                    <li><a href="./index.php" style="background: none;padding-left: 10px;">Trang chủ</a></li>
+                    <li><a>\</a></li>
+                    <li><a style="background: none;padding-left: 10px;"><?= $result_cat['nameProducer'] ?></a></li>
                 </ul>
             </div>
     <?php
@@ -61,11 +65,9 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
                             <h2><?= $result_product_cat['nameProduct'] ?> </h2>
                             <div class="price-details">
                                 <div class="price-number">
-                                    <p><span class="rupees"><?= $result_product_cat['price'] ?> VND</span></p>
+                                    <p><span class="rupees"><?= $fm->format_currency($result_product_cat['price']) . " đ"  ?></span></p>
                                 </div>
-                                <div class="add-cart">
-                                    <a href="preview.php"><img src="public/frontend/images/cart.png" /></a>
-                                </div>
+
                                 <div class="clear"></div>
                             </div>
 
@@ -93,15 +95,18 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
 </div>
 <style>
     .main_title {
-        font-size: 12px;
         width: 100%;
         border: 0.5px #eceaea solid;
-        height: 55px;
+        height: 40px;
+        background-color: #F5F5F5;
+        margin: 10px 0px 30px 0px;
+        border-radius: 5px;
     }
 
     .main_title ul {
         list-style: none;
-        margin: 10px;
+        margin: 0px;
+        line-height: 45px;
         display: block;
     }
 
@@ -110,11 +115,10 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
     }
 
     .main_title ul li a {
-        line-height: 35px;
-        font-size: 15px;
-        font-weight: 600;
+        font-size: 18px;
         color: #555;
         padding: 0px 10px;
+        font-family: sans-serif;
     }
 
     .main_title ul li a:hover {
@@ -131,7 +135,7 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
         padding: 5px;
         font-size: 20px;
         font-weight: 500;
-        background: #243a76;
+        background: #B81D22;
         color: #fff;
     }
 

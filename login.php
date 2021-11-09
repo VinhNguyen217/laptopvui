@@ -14,15 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 }
 ?>
 <?php
-	$check_login = Session:: get('customer_login');
-	if($check_login != false)
-		header('Location:index.php');					
+$check_login = Session::get('customer_login');
+if ($check_login != false)
+	header('Location:index.php');
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
 
 <head>
-	<title>Online Login Form Responsive Widget Template :: w3layouts</title>
+	<title>Laptopvui.vn</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 	<div class="center-container">
 		<!--header-->
 		<div class="header-w3l">
-			<h1>Online Login Form</h1>
+			<h1>LOGIN FORM</h1>
 		</div>
 		<!--//header-->
 		<div class="main-content-agile">

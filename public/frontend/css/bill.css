@@ -3,6 +3,16 @@
     padding: 0px;
 }
 
+
+.tk-bill td {
+    font-size: 20px;
+}
+
+.tk-pro-item-price {
+    margin-top: 20px;
+    font-size:  20px;
+}
+
 .tk-bill td {
     padding: 12px;
     font-size: 18px;

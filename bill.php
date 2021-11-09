@@ -14,10 +14,10 @@ include "layouts/header.php"
     <div class="box-order-list-tk-new">
     <div class="title-tk-2021">Đơn hàng của tôi</div>
     <div class="list-tab-tk">
-        <a href="contact.php"  class="active">Tất cả</a>
-        <a href="contact.php?statusid=0 "  >Chưa xử lý</a>
-        <a href="contact.php?statusid=1"  >Đang xử lý</a>
-        <a href="contact.php?statusid=2" >Hoàn thành</a>
+        <a href="bill.php"  class="active">Tất cả</a>
+        <a href="bill.php?statusid=0 "  >Chưa xử lý</a>
+        <a href="bill.php?statusid=1"  >Đang xử lý</a>
+        <a href="bill.php?statusid=2" >Hoàn thành</a>
     </div>
     <div class="box-search-tk">
             <button onclick="searchOrderTk()"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -49,7 +49,7 @@ include "layouts/header.php"
                 ?>
                 <tr id="js-item-tk-231912">
                     <td width="120">
-                        <a href="news.php?billid=<?=$result['id_bill']?>" class="tk-id"><?=$result['id_bill']?></a>
+                        <a href="bill_detail.php?billid=<?=$result['id_bill']?>" class="tk-id"><?=$result['id_bill']?></a>
                     </td>
                     <td width="110">
                         <span class="tk-date"><?=$result['date_created']?></span>
@@ -61,7 +61,7 @@ include "layouts/header.php"
                         </div>                     	 
                     </td>
 					<td>
-					<b><?=$result['total_money'] ?>đ</b>
+					<b> <?=$fm->format_currency($result['total_money']) ?>đ</b>
 
 					</td>
                     <td>
@@ -88,17 +88,11 @@ include "layouts/header.php"
                         }
                     }
                 
-                ?>
-                <tr>
-                    <td colspan="5">
-                        <div class="tk-pro-item-price">
-                            Số tiền: <span><?=$sum?>đ</span>
-                        </div>
-                    </td>
-                </tr>
-                
+                ?>                
             </table>
-            
+               <div class="tk-pro-item-price">
+                            Số tiền: <span><?= $fm->format_currency($sum)?>đ</span>
+                        </div>
         </div>
     </div>
 </div>

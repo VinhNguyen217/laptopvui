@@ -13,14 +13,14 @@
 }
 
 p {
-    padding: 16px 20px;
-    font-size: 25px;
+    font-size: 18px;
     font-family: revert;
 }
 
 .cart-items {
     overflow: auto;
     height: 92%;
+    text-align: center;
 }
 
 .modal-body .cart-row button.btn.btn-danger {
@@ -80,13 +80,14 @@ p {
 }
 
 input.pay-pay {
-    margin-left: 27px;
+    margin-left: 22px;
     height: 45px;
     width: 293px;
     background-color: #e5a8c8;
     color: snow;
     font-size: 21px;
     text-align: center;
+    cursor: pointer;
 }
 
 input.pay-pay:hover {
@@ -143,13 +144,15 @@ input.pay-pay:hover {
 
 .headertop_desc .call {
     width: 40%;
+    line-height: 47px;
+    /* padding-left: 10px; */
 }
 
 a {
     font-size: 0.823em;
     color: #770e0e;
     padding: 0 10px;
-    font-family: 'ambleregular';
+    font-family: 'sans-serif';
     text-decoration: none;
 }
 
@@ -163,6 +166,7 @@ a {
     margin: 0;
     padding: 0;
     float: right;
+    line-height: 50px;
 }
 
 .headertop_desc .account_desc {right: 0px;width: 60%;}
@@ -175,8 +179,25 @@ span.number {
 
 .headertop_desc span {color: #303030;font-size: 1em;font-weight: bold;}
 .headertop_desc {
-    background-color: azure;
+    background-color: #F4F4F4;
     width: 100%;
     font-size: 18px;
     display: -webkit-inline-box;
+}
+.information-pay p{
+    font-size: 20px;
+    margin:20px;
+}
+.information-pay a{
+    border: 1px #eceaea solid;
+    font-size: 20px;
+    margin-left: 20px;
+    border-radius: 5px;
+    padding: 8px 15px;
+    background-color: aqua;
+}
+.invoice-pay p{
+    margin: 20px;
+    font-size: 30px;
+    color: red;
 }

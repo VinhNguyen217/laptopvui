@@ -1,5 +1,9 @@
 <?php
-include "layouts/header.php"
+include "layouts/header.php";
+require_once "helpers/format.php";
+
+$fm = new Format();
+$_SESSION['check1'] = false;
 ?>
 <?php
 if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
@@ -16,11 +20,11 @@ if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
     ?>
         <div class="main_title">
             <ul>
-                <li><a href="./index.php" style="background: none;padding-left: 0px;">Trang chủ</a></li>
-                <li><a>/</a></li>
-                <li><a href="category.php?catid=<?= $result_dm['id_producer'] ?>" style="background: none;padding-left: 0px;"><?= $result_dm['nameProducer'] ?></a></li>
-                <li><a>/</a></li>
-                <li><a href="#" style="background: none;padding-left: 0px;"><?= $result_dm['nameProductType'] ?></a></li>
+                <li><a href="./index.php" style="background: none;padding-left: 10px;">Trang chủ</a></li>
+                <li><a>\</a></li>
+                <li><a href="category.php?catid=<?= $result_dm['id_producer'] ?>" style="background: none;padding-left: 10px;"><?= $result_dm['nameProducer'] ?></a></li>
+                <li><a>\</a></li>
+                <li><a style="background: none;padding-left: 10px;"><?= $result_dm['nameProductType'] ?></a></li>
             </ul>
         </div>
     <?php
@@ -53,10 +57,7 @@ if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
                             <h2><?= $result_product_dm['nameProduct'] ?></h2>
                             <div class="price-details">
                                 <div class="price-number">
-                                    <p><span class="rupees"><?= $result_product_dm['price'] ?> VND</span></p>
-                                </div>
-                                <div class="add-cart">
-                                    <a href="preview.php"><img src="public/frontend/images/cart.png" /></a>
+                                    <p><span class="rupees"><?= $fm->format_currency($result_product_dm['price']) . " đ" ?></span></p>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -85,13 +86,17 @@ if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
             font-size: 12px;
             width: 100%;
             border: 0.5px #eceaea solid;
-            height: 55px;
+            height: 40px;
+            background-color: #F5F5F5;
+            border-radius: 5px;
+            margin: 10px 0px 30px 0px;
         }
 
         .main_title ul {
             list-style: none;
-            margin: 10px;
+            margin: 0px;
             display: block;
+            line-height: 45px;
         }
 
         .main_title ul li {
@@ -104,6 +109,7 @@ if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
             font-weight: 600;
             color: #555;
             padding: 0px 10px;
+            font-family: sans-serif;
         }
 
         .main_title ul li a:hover {
@@ -120,7 +126,7 @@ if (!isset($_GET['demandid']) || $_GET['demandid'] == NULL) {
             padding: 5px;
             font-size: 20px;
             font-weight: 500;
-            background: #243a76;
+            background: #B81D22;
             color: #fff;
         }
 

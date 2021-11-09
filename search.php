@@ -1,9 +1,12 @@
 <?php
-include "layouts/header.php"
+include "layouts/header.php";
+require_once "helpers/format.php";
+$fm = new Format();
+$_SESSION['check1'] = false;
 ?>
 
 <div class="main">
-	
+
 	<div class="content">
 		<div class="content_top">
 			<div class="heading">
@@ -13,18 +16,18 @@ include "layouts/header.php"
 		</div>
 		<div class="section group">
 			<?php
-                $get_prt = $product->search($_SESSION['search']);
-			    if ($get_prt) {
-				    while ($result_new = $get_prt->fetch_assoc()) {
+			$get_prt = $product->search($_SESSION['search']);
+			if ($get_prt) {
+				while ($result_new = $get_prt->fetch_assoc()) {
 			?>
 					<div class="grid_1_of_4 images_1_of_4">
 						<a href="preview.php?proid=<?= $result_new['id_product'] ?>"><img src="uploads/<?= $result_new['image'] ?>" alt="" /></a>
 						<h2><?= $result_new['nameProduct'] ?></h2>
 						<div class="price-details">
 							<div class="price-number">
-								<p><span class="rupees"><?= $result_new['price'] ?></span></p>
+								<p><span class="rupees"><?= $fm->format_currency($result_new['price']) . " đ" ?></span></p>
 							</div>
-							
+
 							<div class="clear"></div>
 						</div>
 
@@ -34,8 +37,8 @@ include "layouts/header.php"
 			}
 			?>
 		</div>
-		
-		
+
+
 	</div>
 	<style>
 		.main_title {

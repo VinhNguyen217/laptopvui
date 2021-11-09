@@ -1,19 +1,35 @@
 <?php require_once './layouts/header.php' ?>
 <?php require_once '../classes/bill.php' ?>
+<?php require_once '../classes/product.php' ?>
 <?php require_once '../helpers/format.php' ?>
 <?php
 $bill = new Bill();
+$product = new Product();
 $fm = new Format();
 if (isset($_GET['bill_id'])) {
     $bill_id = $_GET['bill_id'];
     $result = $bill->getBillById($bill_id);
     $value = $result->fetch_assoc();
 }
+
 if (isset($_POST['status'])) {
     $status = $_POST['status'];
-    $updateStatus = $bill->updateStatus($bill_id, $status);
-    if ($updateStatus != false) {
-        echo "<script>location.href = 'invoice.php';</script>";
+    if ($status == 1) {
+        $detail_bill = $bill->getDetailBillById($bill_id);
+        $updateStatus = $bill->updateStatus($bill_id, $status);
+        while ($value_detail_bill = $detail_bill->fetch_assoc()) {
+            $id = $value_detail_bill['id_product'];
+            $amount = $value_detail_bill['amount'];
+            $updateAmount = $product->updateAmount($id, $amount);
+        }
+        if ($updateStatus != false) {
+            echo "<script>location.href = 'invoice.php';</script>";
+        }
+    } else {
+        $updateStatus = $bill->updateStatus($bill_id, $status);
+        if ($updateStatus != false) {
+            echo "<script>location.href = 'invoice.php';</script>";
+        }
     }
 }
 ?>

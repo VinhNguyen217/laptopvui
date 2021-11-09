@@ -67,6 +67,7 @@ class Customer
                     $result = $this->db->number($check);
                     if($result > 0)
                     {
+                        Session::set('check1',false);
                         Session::set('check',true); // check xem có tồn tại thông tin của hoá đơn trc không,nếu có thì sử dụng để hiện lên trên pay.php
                         $check = "SELECT * FROM bill where id_user = {$_SESSION['customer_id']} ORDER BY id_bill DESC limit 1 ";
                         $result = $this->db->select($check);
@@ -80,6 +81,7 @@ class Customer
                         
                     }
                     else{
+                        Session::set('check1',false);
                         Session::set('check',false); // check xem có tồn tại thông tin của hoá đơn trc không,nếu có thì sử dụng để hiện lên trên pay.php
                     }
                     
@@ -123,8 +125,14 @@ class Customer
                 
             }
             $_SESSION['check'] = true;
-            $alert = '<script language="javascript">alert("Cập nhật thành công !!!"); window.location="pay.php";</script>';
-            echo $alert;
+            if($_SESSION['check1'] == true){
+                $alert = '<script language="javascript">alert("Cập nhật thành công !!!"); window.location="pay.php";</script>';
+                echo $alert;
+            }
+            else  {
+                $alert = '<script language="javascript">alert("Cập nhật thành công !!!");</script>';
+                echo $alert;
+                }
         } else {
             $_SESSION['check'] = false;
             $alert = '<script language="javascript">alert("Cập nhật thất bại !!!"); </script>';
